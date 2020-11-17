@@ -1,0 +1,59 @@
+﻿<div class="project-container" style="border: 5px solid red;">
+    <div class="project-image">
+
+    </div>
+    <div class="project-description">
+        <h3>@Name</h3>
+        @foreach(var skill in Skills)
+        {
+            <h1>@skill</h1>
+        }
+        <h1>@Description</h1>
+        <h1>@SourceUrl</h1>
+        <h1>@ReferenceLink</h1>
+    </div>
+</div>
+
+@code {
+    /// <summary>
+    /// 프로젝트명
+    /// </summary>
+    [Parameter]
+    public string Name { get; set; }
+
+    /// <summary>
+    /// 프로젝트 시작일
+    /// </summary>
+    [Parameter]
+    public DateTime? StartDate { get; set; }
+
+    /// <summary>
+    /// 프로젝트 시작일
+    /// </summary>
+    [Parameter]
+    public DateTime? EndDate { get; set; }
+
+    /// <summary>
+    /// 사용 기술
+    /// </summary>
+    [Parameter]
+    public IEnumerable<string> Skills { get; set; }
+
+    /// <summary>
+    /// 프로젝트 설명
+    /// </summary>
+    [Parameter]
+    public string Description { get; set; }
+
+    /// <summary>
+    /// 소스 경로
+    /// </summary>
+    [Parameter]
+    public string SourceUrl { get; set; }
+
+    /// <summary>
+    /// 관련 사이트
+    /// </summary>
+    [Parameter]
+    public string ReferenceLink { get; set; }
+}
