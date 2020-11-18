@@ -1,0 +1,57 @@
+﻿@inject IJSRuntime JSRuntime;
+
+<div id="intro" class="intro" @ref="Reference">
+    <div class="title">소개</div>
+    <div class="contents">
+        <div>만 3년 차 닷넷 개발자 박상곤입니다.</div>
+        <div>윈도우 및 모바일 어플리케이션을 위주로 다양한 개발을 하고 있습니다.</div>
+
+        <div style="margin-top: 20px; border: 1px solid #EEE; padding: 10px; display: inline-block;">
+            <div style="color: #53bac8; font-size: 24px;">Contact.</div>
+            <div style="margin-top: 5px;">
+                <div>Email. <a href="mailto: psg107@naver.com" style="color: #555; font-weight: bold;">psg107@naver.com</a></div>
+                <div>Community. <a href="https://cafe.naver.com/ArticleSearchList.nhn?search.clubid=28204117&search.searchdate=all&search.searchBy=3&search.query=%BE%C7%C7%C3%B7%AF&search.defaultValue=1&search.sortBy=date" target="_blank" style="color: #555; font-weight: bold;">https://cafe.naver.com/xamarinmaster</a></div>
+
+                <div class="icon-container">
+                    <div class="icon git-icon" title="git" @onclick="OpenGithub"></div>
+                    <div class="icon bj-icon" title="baekjoon" @onclick="OpenBaekjoon"></div>
+                    <div class="icon kakao-icon" title="kakao" @onclick="OpenKakaoOpenChat"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    /// <summary>
+    /// 최상단 element
+    /// </summary>
+    public ElementReference Reference { get; set; }
+
+    /// <summary>
+    /// 깃 열기
+    /// </summary>
+    /// <returns></returns>
+    private async Task OpenGithub()
+    {
+        await JSRuntime.InvokeAsync<object>("open", "https://github.com/psg107", "_blank");
+    }
+
+    /// <summary>
+    /// 백준 열기
+    /// </summary>
+    /// <returns></returns>
+    private async Task OpenBaekjoon()
+    {
+        await JSRuntime.InvokeAsync<object>("open", "https://www.acmicpc.net/user/psg107", "_blank");
+    }
+
+    /// <summary>
+    /// 카카오톡 오픈채팅 열기
+    /// </summary>
+    /// <returns></returns>
+    private async Task OpenKakaoOpenChat()
+    {
+        await JSRuntime.InvokeAsync<object>("open", "https://open.kakao.com/o/syi2ZGVc", "_blank");
+    }
+}

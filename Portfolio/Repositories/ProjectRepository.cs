@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Portfolio.Repositories
 {
-    public class ProjectRepository : IRepositoryBase<Project>
+    public class ProjectRepository : IRepositoryBase<ProjectEntity>
     {
         private readonly PortfolioDbContext context;
 
@@ -18,10 +18,10 @@ namespace Portfolio.Repositories
             this.context = context;
         }
 
-        public IEnumerable<Project> GetAll()
+        public IEnumerable<ProjectEntity> GetAll()
         {
-            return context.Projects.Include(nameof(Project.ProjectSkills))
-                                   .Include($"{nameof(Project.ProjectSkills)}.{nameof(ProjectSkill.Skill)}")
+            return context.Projects.Include(nameof(ProjectEntity.ProjectSkills))
+                                   .Include($"{nameof(ProjectEntity.ProjectSkills)}.{nameof(ProjectSkillEntity.Skill)}")
                                    .AsEnumerable();
         }
     }

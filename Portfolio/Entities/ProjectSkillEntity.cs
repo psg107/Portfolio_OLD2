@@ -2,18 +2,18 @@
 
 namespace Portfolio.Entities
 {
-    [Table("ProjectSkill")]
     /// <summary>
     /// 
     /// </summary>
-    public class ProjectSkill
+    [Table("ProjectSkill")]
+    public class ProjectSkillEntity
     {
         public int ProjectId { get; set; }
 
-        public Project Project { get; set; }
+        public ProjectEntity Project { get; set; }
 
         public int SkillId { get; set; }
 
-        public Skill Skill { get; set; }
+        public SkillEntity Skill { get; set; }
     }
 }

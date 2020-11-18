@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Portfolio.Defines
 {
+    [Obsolete("조금 과한 것 같음")]
     /// <summary>
     /// 
     /// </summary>
@@ -24,6 +25,6 @@ namespace Portfolio.Defines
         /// <summary>
         /// 
         /// </summary>
-        public const int URL_SIZE = 100;
+        public const int URL_SIZE = 500;
     }
 }

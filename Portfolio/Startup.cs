@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,13 +24,32 @@ namespace Portfolio
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            PortfolioDbContextSeed.GenerateData();
+
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
             services.AddDbContext<PortfolioDbContext>();
 
-            services.AddTransient<IRepositoryBase<Project>, ProjectRepository>();
+            services.AddTransient<IRepositoryBase<ProjectEntity>, ProjectRepository>();
+            services.AddTransient<IRepositoryBase<SkillEntity>, SkillRepository>();
             services.AddTransient<ProjectService>();
+            services.AddSingleton<MapperService>();
+
+#if !DEBUG
+            var sp = services.BuildServiceProvider();
+            using (var scope = sp.CreateScope())
+            {
+                var scopedServices = scope.ServiceProvider;
+                var db = scopedServices.GetRequiredService<PortfolioDbContext>();
+
+                // Ensure the database is created.
+                db.Database.EnsureCreated();
+
+                //https://docs.microsoft.com/ko-kr/ef/core/managing-schemas/migrations/applying?tabs=dotnet-core-cli
+                //db.Database.Migrate();
+            }
+#endif
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,10 +63,10 @@ namespace Portfolio
             {
                 app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                //app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();

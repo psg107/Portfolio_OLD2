@@ -1,0 +1,68 @@
+﻿/*사이드바 숨기기*/
+@media (max-width:1900px) {
+    .sidebar {
+        visibility: collapse;
+    }
+}
+
+/*컨테이너 크기 조절*/
+@media (max-width:2000px) {
+    .container {
+        max-width: 1650px;
+    }
+
+    .projects > .contents {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .projects > .contents .project-item:nth-last-of-type(3n + 2) {
+        margin-right: 0;
+    }
+}
+
+@media (min-width:900px) AND (max-width:1156px) {
+    .projects > .contents {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .projects > .contents .project-item:nth-last-of-type(3n + 2) {
+        margin-right: 20px;
+    }
+
+    .projects > .contents .project-item:nth-last-of-type(2n + 1) {
+        margin-right: 0;
+    }
+}
+
+@media (max-width:900px) {
+    .projects > .contents {
+        grid-template-columns: 1fr;
+    }
+
+    .projects > .contents .project-item:nth-last-of-type(3n + 2) {
+        margin-right: 20px;
+    }
+
+    .projects > .contents .project-item:nth-last-of-type(2n + 1) {
+        margin-right: 20px;
+    }
+
+    .project-item {
+        height: auto;
+        width: 100%;
+        margin: 0 auto;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .project-item .img {
+        width: 400px;
+        height: auto;
+    }
+
+    .project-item .description {
+        width: 100%;
+        height: auto;
+    }
+}

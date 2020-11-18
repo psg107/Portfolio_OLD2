@@ -1,5 +1,61 @@
 ﻿@page "/"
+@inject IJSRuntime JSRuntime;
 
-<h1>Hello, world!</h1>
+<div class="container">
+    @*소개*@
+    <IntroContainer @ref="introContainerReference" />
 
-Welcome to your new app.
+    @*스킬*@
+    <SkillContainer @ref="skillContainerReference" />
+
+    @*프로젝트*@
+    <ProjectContainer @ref="projectContainerReference" />
+</div>
+
+<Sidebar ActivatedLink="@activatedLink" />
+<AnchorNavigation />
+
+@code {
+    private Sidebar sidebarReference;
+    private IntroContainer introContainerReference;
+    private SkillContainer skillContainerReference;
+    private ProjectContainer projectContainerReference;
+
+    private static Action<string> action;
+
+    private string activatedLink;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+
+        if (firstRender)
+        {
+            var introContainer = introContainerReference.Reference;
+            var skillContainer = skillContainerReference.Reference;
+            var projectContainer = projectContainerReference.Reference;
+
+            JSRuntime.InvokeAsync<ElementReference>("addScrollEvent",
+                introContainer, skillContainer, projectContainer);
+
+            action = UpdateActivatedLink;
+        }
+    }
+
+    private void Test()
+    {
+        activatedLink = "소개";
+    }
+
+    private void UpdateActivatedLink(string link)
+    {
+        activatedLink = link;
+        StateHasChanged();
+    }
+
+    [JSInvokable]
+    public static void ScrollCallback(string activatedLink)
+    {
+        action.Invoke(activatedLink);
+    }
+}

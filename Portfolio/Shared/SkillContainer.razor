@@ -1,0 +1,61 @@
+﻿@using Models
+@using Portfolio.Services
+@using ChartJs.Blazor;
+@using ChartJs.Blazor.PieChart;
+@using ChartJs.Blazor.Common;
+@using ChartJs.Blazor.Common.Enums;
+@using ChartJs.Blazor.Util;
+@inject ProjectService ProjectService
+
+<div id="skill" class="skill" @ref="Reference">
+    <div class="title">스킬</div>
+    <div class="contents">
+        <div class="skill-chart-wrapper">
+            <Chart Config="_config"></Chart>
+        </div>
+    </div>
+</div>
+
+@code {
+    /// <summary>
+    /// chartjs pie 설정
+    /// </summary>
+    private PieConfig _config;
+
+    /// <summary>
+    /// 최상단 element
+    /// </summary>
+    public ElementReference Reference { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        var countingSkills = ProjectService.GetProjectCountingSkill();
+
+        _config = new PieConfig
+        {
+            Options = new PieOptions
+            {
+                Responsive = true,
+                MaintainAspectRatio = false
+            },
+        };
+
+        PieDataset<int> dataset = new PieDataset<int>();
+        foreach (var countingSkill in countingSkills)
+        {
+            _config.Data.Labels.Add(countingSkill.Value.Name); ;
+            dataset.Add(countingSkill.Count);
+        }
+
+        var randomColors = new List<string>();
+        for (int i = 0; i < countingSkills.Count; i++)
+        {
+            randomColors.Add(ColorUtil.RandomColorString());
+        }
+        dataset.BackgroundColor = randomColors.ToArray();
+
+        _config.Data.Datasets.Add(dataset);
+    }
+}

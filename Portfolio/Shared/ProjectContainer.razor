@@ -1,59 +1,154 @@
-﻿<div class="project-container" style="border: 5px solid red;">
-    <div class="project-image">
+﻿@using Portfolio.Services
+@inject ProjectService ProjectService
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavManager
 
+<div id="project" class="projects" @ref="Reference">
+    <div class="title cursor-pointer" @onclick="ToggleProjectOrder">
+        프로젝트<span class="arrow @projectArrowClassStyle"></span>
     </div>
-    <div class="project-description">
-        <h3>@Name</h3>
-        @foreach(var skill in Skills)
+    <div class="contents">
+        @foreach (var project in projects)
         {
-            <h1>@skill</h1>
+        <div class="project-item">
+            @{
+                if (string.IsNullOrEmpty(@project.ImageFilePath) == false)
+                {
+                    <div class="project-img-wrapper cursor-pointer" @onclick="() => OpenProjectImageUrl(project)">
+                        <img src="@project.ImageFilePath" alt="" srcset="">
+                    </div>
+                }
+                else
+                {
+                    <div class="project-img-wrapper">
+                        <img src="/images/project/noImage.jpg" alt="" srcset="">
+                    </div>
+                }
+            }
+
+            <div class="project-description">
+                <div class="project-icons">
+                    @if (project.ProjectType.HasFlag(Entities.ProjectType.Private))
+                    {
+                        <span class="project-icon private"></span>
+                    }
+                    @if (project.ProjectType.HasFlag(Entities.ProjectType.Company))
+                    {
+                        <span class="project-icon company"></span>
+                    }
+                    @if (project.ProjectType.HasFlag(Entities.ProjectType.Incomplete))
+                    {
+                        <span class="project-icon incomplete"></span>
+                    }
+                </div>
+                <ul class="project-skills">
+                    @foreach (var skill in project.Skills)
+                    {
+                        <li>@skill.Name</li>
+                    }
+                </ul>
+
+                <div class="project-title">@project.Name</div>
+                <div class="project-created-year">@(project.CreateYear?.ToString() ?? "-")</div>
+                <pre class="project-description-text">@project.Description</pre>
+
+                <div class="project-btn-container">
+                    @if (!string.IsNullOrEmpty(project.SourceUrl))
+                    {
+                        <a class="project-btn" href="@project.SourceUrl" target="_blank" style="cursor: @SourceButtonCursorStyle">Source</a>
+                    }
+                    @if (!string.IsNullOrEmpty(project.ReferenceUrl))
+                    {
+                        <a class="project-btn" href="@project.ReferenceUrl" target="_blank">Link</a>
+                    }
+                </div>
+            </div>
+        </div>
         }
-        <h1>@Description</h1>
-        <h1>@SourceUrl</h1>
-        <h1>@ReferenceLink</h1>
     </div>
 </div>
 
 @code {
     /// <summary>
-    /// 프로젝트명
+    /// 깃허브 repo 퍼블릭이면 true
     /// </summary>
-    [Parameter]
-    public string Name { get; set; }
+    private const bool IS_PUBLIC_GIT_REPO = false;
 
     /// <summary>
-    /// 프로젝트 시작일
+    /// 커서 모양
     /// </summary>
-    [Parameter]
-    public DateTime? StartDate { get; set; }
+    private const string SourceButtonCursorStyle = IS_PUBLIC_GIT_REPO ? "unset" : "not-allowed";
 
     /// <summary>
-    /// 프로젝트 시작일
+    /// true: 회사 프로젝트 우선 출력, false: 개인 프로젝트 우선 출력
     /// </summary>
-    [Parameter]
-    public DateTime? EndDate { get; set; }
+    public bool companyFirst = false;
 
     /// <summary>
-    /// 사용 기술
+    /// 프로젝트 옆에 달린 화살표 방향 클래스
     /// </summary>
-    [Parameter]
-    public IEnumerable<string> Skills { get; set; }
+    public string projectArrowClassStyle
+        => companyFirst ? "arrow-down" : "arrow-up";
 
     /// <summary>
-    /// 프로젝트 설명
+    /// 최상단 element
     /// </summary>
-    [Parameter]
-    public string Description { get; set; }
+    public ElementReference Reference { get; set; }
 
     /// <summary>
-    /// 소스 경로
+    /// 프로젝트
     /// </summary>
-    [Parameter]
-    public string SourceUrl { get; set; }
+    private List<Models.Project> projects;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        this.companyFirst = new Random().Next(0, 2) == 1;
+
+        LoadProjects();
+    }
 
     /// <summary>
-    /// 관련 사이트
+    /// 프로젝트 정렬 화살표 토글
     /// </summary>
-    [Parameter]
-    public string ReferenceLink { get; set; }
+    private void ToggleProjectOrder()
+    {
+        companyFirst = !companyFirst;
+
+        LoadProjects();
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    private void LoadProjects()
+    {
+        var project = ProjectService.GetProjects();
+
+        if (companyFirst)
+        {
+            project = project.OrderByDescending(x => x.ProjectType.HasFlag(Entities.ProjectType.Company));
+        }
+        else
+        {
+            project = project.OrderBy(x => x.ProjectType.HasFlag(Entities.ProjectType.Company));
+        }
+
+        this.projects = project.ToList();
+    }
+
+    /// <summary>
+    /// 이미지 새창에서 열기
+    /// </summary>
+    /// <param name="project"></param>
+    private async Task OpenProjectImageUrl(Models.Project project)
+    {
+        if (string.IsNullOrEmpty(project?.ImageFilePath))
+        {
+            return;
+        }
+
+        await JSRuntime.InvokeAsync<object>("open", $"{NavManager.BaseUri}{project.ImageFilePath}", "_blank");
+    }
 }

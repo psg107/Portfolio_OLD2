@@ -1,0 +1,16 @@
+﻿<div class="sidebar">
+    <ul>
+        <li><a style="@introStyle" href="#intro">소개</a></li>
+        <li><a style="@skillStyle" href="#skill">스킬</a></li>
+        <li><a style="@projectStyle" href="#project">프로젝트</a></li>
+    </ul>
+</div>
+
+@code {
+    [Parameter]
+    public string ActivatedLink { get; set; }
+
+    public string introStyle => ActivatedLink == "소개" ? "font-weight: bold" : "";
+    public string skillStyle => ActivatedLink == "스킬" ? "font-weight: bold" : "";
+    public string projectStyle => ActivatedLink == "프로젝트" ? "font-weight: bold" : "";
+}

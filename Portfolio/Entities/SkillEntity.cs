@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Portfolio.Entities
 {
-    [Table("Skill")]
     /// <summary>
-    /// <seealso cref="Model.Skill"/>
+    /// <seealso cref="Models.Skill"/>
     /// </summary>
-    public class Skill
+    [Table("Skill")]
+    public class SkillEntity
     {
         [Key]
         public int SkillId { get; set; }
@@ -25,6 +25,6 @@ namespace Portfolio.Entities
         [MaxLength(ColumnSize.NAME_SIZE)]
         public string Name { get; set; }
 
-        public ICollection<ProjectSkill> ProjectSkills { get; set; }
+        public virtual ICollection<ProjectSkillEntity> ProjectSkills { get; set; }
     }
 }

@@ -1,1 +1,252 @@
-﻿
+﻿.container > div + div {
+    margin-top: 100px;
+}
+
+.sidebar {
+    margin-top: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.container {
+    max-width: 1800px;
+    min-width: 450px;
+    margin: 0 auto;
+    background-color: #FFF;
+}
+
+.title {
+    display: inline-block;
+    border-left: 4px solid #E5E5E5;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 20px 0;
+    margin-left: 20px;
+    padding-left: 10px;
+}
+
+.contents {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.skill > .contents {
+    text-align: center;
+}
+
+.projects > .contents {
+    display: grid;
+}
+
+.project-item {
+    display: inline-block;
+    height: auto;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    text-align: left;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
+    vertical-align: top;
+    border: 1px solid lightgray;
+}
+
+/* 프로젝트 - 이미지 */
+.project-item .project-img-wrapper {
+    height: 200px;
+    text-align: center;
+}
+
+.project-item .project-img-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* 프로젝트 - 스킬 */
+.project-item .project-skills {
+    font-size: 14px;
+}
+
+/* 프로젝트 - 제목 */
+.project-item .project-title {
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* 프로젝트 - 제작년도 */
+.project-item .project-created-year {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/* 프로젝트 - 설명 */
+.project-item .project-description {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    padding: 10px 20px;
+}
+
+/* 프로젝트 - 아이콘 */
+.project-item .project-description .project-icon {
+    float: left;
+    margin-right: 2px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid black;
+}
+
+.project-item .project-description .project-icon.company {
+    background: #AA0000;
+}
+
+.project-item .project-description .project-icon.company::before {
+    content: '회사';
+}
+
+.project-item .project-description .project-icon.private {
+    background: green;
+}
+
+.project-item .project-description .project-icon.private::before {
+    content: '개인';
+}
+
+.project-item .project-description .project-icon.etc {
+    background: lightblue;
+}
+
+.project-item .project-description .project-icon.etc::before {
+    content: '기타';
+}
+
+.project-item .project-description .project-icon.incomplete {
+    background: gray;
+}
+
+.project-item .project-description .project-icon.incomplete::before {
+    content: '미완성';
+}
+
+/* 프로젝트 - 스킬 */
+.project-item .project-description .project-skills {
+    display: inline-block;
+    padding: 0;
+    margin: 0 5px;
+    text-align: left;
+    word-break: break-word;
+}
+
+.project-item .project-description .project-skills li {
+    display: inline
+}
+
+.project-item .project-description .project-skills li:after {
+    content: " ";
+    letter-spacing: 1em;
+    background: center center no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwAAADsABataJCQAAABl0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC4xMkMEa+wAAAAnSURBVBhXY/Dz89MA4sNA/B9Ka4AEYQIwfBgkiCwAxjhVopnppwEApxQqhnyQ+VkAAAAASUVORK5CYII=);
+}
+
+.project-item .project-description .project-icons {
+    display: inline-block;
+    width: 100%;
+}
+
+/* 프로젝트 - 설명 */
+.project-item .project-description .project-description-text {
+    white-space: pre-wrap;
+    margin: 0;
+    margin-top: 10px;
+}
+
+/* 프로젝트 - 버튼들 */
+.project-item .project-btn-container {
+    margin-top: 10px;
+}
+
+/* 프로젝트 - 버튼 */
+.project-item .project-description .project-btn {
+    text-decoration: none;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 2px;
+    color: black;
+    background: white;
+    /* 드래그방지 : https://ingryong.tistory.com/4 */
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+
+.project-btn + .project-btn {
+    margin-left: 5px;
+}
+
+.project-item .project-description .project-btn:hover {
+    color: white;
+    background: black;
+    transition: ease-in all .2s;
+}
+
+.project-item .project-description .project-btn + .project-item .project-description .project-btn {
+    margin-left: 5px;
+}
+
+.skill-chart-wrapper {
+    height: 400px;
+}
+
+/* 공용 */
+
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 6px;
+    margin-left: 5px;
+    transition: all 0.2s ease;
+}
+
+.arrow-up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.arrow-down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    margin-bottom: 7px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.icon-container {
+    margin-top: 20px;
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.git-icon {
+    background-image: url('/images/icons/git.png');
+}
+
+.bj-icon {
+    background-image: url('/images/icons/bj.png');
+}
+
+.kakao-icon {
+    background-image: url('/images/icons/kakao.png');
+}

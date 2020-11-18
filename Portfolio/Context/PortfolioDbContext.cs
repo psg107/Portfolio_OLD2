@@ -22,52 +22,60 @@ namespace Portfolio.Context
         {
             base.OnConfiguring(optionsBuilder);
 
-            var connectionString = configuration.GetConnectionString("SqlServerConnectionString");
-            optionsBuilder.UseSqlServer(connectionString);
+            //var connectionString = configuration.GetConnectionString("MysqlConnectionString");
+            //optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+
+#warning 이상하게 appsettings.json에 넣으면 잘 안됨.. 임시로 하드코딩
+#if DEBUG
+            var connectionString = configuration.GetConnectionString("MysqlConnectionString");
+#else
+            var connectionString = configuration.GetConnectionString("NaverCloudMySqlConnectionString");
+#endif
+            optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<ProjectSkill>()
+            modelBuilder.Entity<ProjectSkillEntity>()
                         .HasKey(x => new { x.ProjectId, x.SkillId });
-            modelBuilder.Entity<Skill>()
+            modelBuilder.Entity<SkillEntity>()
                         .Property(x => x.SkillId)
                         .ValueGeneratedOnAdd();
-            modelBuilder.Entity<Project>()
+            modelBuilder.Entity<ProjectEntity>()
                         .Property(x => x.ProjectId)
                         .ValueGeneratedOnAdd();
 
-            modelBuilder.Entity<ProjectSkill>()
+            modelBuilder.Entity<ProjectSkillEntity>()
                         .HasOne(x => x.Skill)
                         .WithMany(x => x.ProjectSkills)
                         .HasForeignKey(x => x.SkillId);
-            modelBuilder.Entity<ProjectSkill>()
+            modelBuilder.Entity<ProjectSkillEntity>()
                         .HasOne(x => x.Project)
                         .WithMany(x => x.ProjectSkills)
                         .HasForeignKey(x => x.ProjectId);
 
-            var (skills, projects, projectSkills) = PortfolioDbContextSeed.GenerateSeed();
+            var (skills, projects, projectSkills) = PortfolioDbContextSeed.GenerateData();
 
-            modelBuilder.Entity<Skill>().HasData(skills);
-            modelBuilder.Entity<Project>().HasData(projects);
-            modelBuilder.Entity<ProjectSkill>().HasData(projectSkills);
+            modelBuilder.Entity<SkillEntity>().HasData(skills);
+            modelBuilder.Entity<ProjectEntity>().HasData(projects);
+            modelBuilder.Entity<ProjectSkillEntity>().HasData(projectSkills);
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public DbSet<Skill> Skills { get; set; }
+        public DbSet<SkillEntity> Skills { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public DbSet<Project> Projects { get; set; }
+        public DbSet<ProjectEntity> Projects { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public DbSet<ProjectSkill> ProjectSkills { get; set; }
+        public DbSet<ProjectSkillEntity> ProjectSkills { get; set; }
     }
 }
