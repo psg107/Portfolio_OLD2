@@ -15,7 +15,7 @@
         grid-template-columns: 1fr 1fr 1fr;
     }
 
-    .projects > .contents .project-item:nth-last-of-type(3n + 2) {
+    .projects > .contents .project-item:nth-child(3n) {
         margin-right: 0;
     }
 }
@@ -25,11 +25,11 @@
         grid-template-columns: 1fr 1fr;
     }
 
-    .projects > .contents .project-item:nth-last-of-type(3n + 2) {
+    .projects > .contents .project-item:nth-child(3n) {
         margin-right: 20px;
     }
 
-    .projects > .contents .project-item:nth-last-of-type(2n + 1) {
+    .projects > .contents .project-item:nth-child(2n) {
         margin-right: 0;
     }
 }
@@ -39,11 +39,11 @@
         grid-template-columns: 1fr;
     }
 
-    .projects > .contents .project-item:nth-last-of-type(3n + 2) {
+    .projects > .contents .project-item:nth-child(3n) {
         margin-right: 20px;
     }
 
-    .projects > .contents .project-item:nth-last-of-type(2n + 1) {
+    .projects > .contents .project-item:nth-child(2n) {
         margin-right: 20px;
     }
 
