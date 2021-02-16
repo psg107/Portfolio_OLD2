@@ -128,11 +128,11 @@
 
         if (companyFirst)
         {
-            project = project.OrderByDescending(x => x.ProjectType.HasFlag(Entities.ProjectType.Company));
+            project = project.OrderByDescending(x => x.ProjectType.HasFlag(Entities.ProjectType.Company)).ThenByDescending(x => x.CreateYear);
         }
         else
         {
-            project = project.OrderBy(x => x.ProjectType.HasFlag(Entities.ProjectType.Company));
+            project = project.OrderBy(x => x.ProjectType.HasFlag(Entities.ProjectType.Company)).ThenByDescending(x => x.CreateYear);
         }
 
         this.projects = project.ToList();

@@ -30,7 +30,7 @@ namespace Portfolio.Models
         public string Description { get; set; }
 
         /// <summary>
-        /// 프로젝트 시작일
+        /// 프로젝트 제작일
         /// </summary>
         public int? CreateYear { get; set; }
 
