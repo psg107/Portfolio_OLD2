@@ -1,12 +1,12 @@
 ﻿/*사이드바 숨기기*/
-@media (max-width:1900px) {
+@media screen AND (max-width:1900px), print {
     .sidebar {
         visibility: collapse;
     }
 }
 
 /*컨테이너 크기 조절*/
-@media (max-width:2000px) {
+@media screen AND (max-width:2000px) {
     .container {
         max-width: 1650px;
     }
@@ -20,7 +20,7 @@
     }
 }
 
-@media (min-width:900px) AND (max-width:1156px) {
+@media screen AND (min-width:900px) AND (max-width:1156px), print {
     .projects > .contents {
         grid-template-columns: 1fr 1fr;
     }
@@ -34,7 +34,7 @@
     }
 }
 
-@media (max-width:900px) {
+@media screen AND (max-width:900px) {
     .projects > .contents {
         grid-template-columns: 1fr;
     }
