@@ -1138,7 +1138,7 @@ namespace Portfolio.Context
                         Description = "" +
                             "인터넷 커뮤니티 웃긴대학 대기자료에 있는 게시글을 자동으로 추천하는 프로그램입니다.\n\n" +
                             "추천 및 반대 가중치를 계산하여 어시스트가 가능한 글을 자동으로 추천합니다.",
-                        ProjectType = ProjectType.Private | ProjectType.Incomplete,
+                        ProjectType = ProjectType.Private,
                         CreateYear = 2021,
                         SourceUrl = "https://github.com/psg107/HumorUnivAutoAssist",
                         ReferenceUrl = null
