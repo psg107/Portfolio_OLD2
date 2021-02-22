@@ -1141,7 +1141,8 @@ namespace Portfolio.Context
                         ProjectType = ProjectType.Private,
                         CreateYear = 2021,
                         SourceUrl = "https://github.com/psg107/HumorUnivAutoAssist",
-                        ReferenceUrl = null
+                        ReferenceUrl = null,
+                        ImageFilePath = "/images/project/hu.png"
                     },
                     Skills = new List<SkillEntity>
                     {
