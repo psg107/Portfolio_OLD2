@@ -69,9 +69,9 @@
 </div>
 
 @code {
-    /// <summary>
-    /// 깃허브 repo 퍼블릭이면 true
-    /// </summary>
+        /// <summary>
+        /// 깃허브 repo 퍼블릭이면 true
+        /// </summary>
     private const bool IS_PUBLIC_GIT_REPO = false;
 
     /// <summary>
@@ -126,13 +126,14 @@
     {
         var project = ProjectService.GetProjects();
 
+#warning 코드가 개판이군
         if (companyFirst)
         {
-            project = project.OrderByDescending(x => x.ProjectType.HasFlag(Entities.ProjectType.Company)).ThenByDescending(x => x.CreateYear);
+            project = project.OrderByDescending(x => x.ProjectType.HasFlag(Entities.ProjectType.Company)).ThenByDescending(x => x.CreateYear).ThenByDescending(x => x.ProjectId);
         }
         else
         {
-            project = project.OrderBy(x => x.ProjectType.HasFlag(Entities.ProjectType.Company)).ThenByDescending(x => x.CreateYear);
+            project = project.OrderBy(x => x.ProjectType.HasFlag(Entities.ProjectType.Company)).ThenByDescending(x => x.CreateYear).ThenByDescending(x => x.ProjectId);
         }
 
         this.projects = project.ToList();

@@ -157,6 +157,15 @@ namespace Portfolio.Context
 
             /// <summary> </summary>
             Blazor,
+
+            /// <summary> </summary>
+            Bootstrap,
+
+            /// <summary> </summary>
+            JQuery,
+
+            /// <summary> </summary>
+            Razor,
         }
 
         /// <summary>
@@ -1150,6 +1159,34 @@ namespace Portfolio.Context
                         skills.SingleOrDefault(x => x.Name == Skill.Console.ToString()),
                         skills.SingleOrDefault(x => x.Name == Skill.Regex.ToString()),
                         skills.SingleOrDefault(x => x.Name == Skill.XPath.ToString())
+                    }
+                },
+                new ProjectSkillMatcher
+                {
+                    Project = new ProjectEntity
+                    {
+                        ProjectId = projectIndex++,
+                        Name = "블로그 형태의 웹사이트",
+                        Description = "" +
+                            "블로그 형태의 웹사이트입니다. \n\n" +
+                            "현재 명확한 컨셉을 정하지 못해 생각나는 기능을 하나씩 추가하고 있습니다.",
+                        ProjectType = ProjectType.Private,
+                        CreateYear = 2021,
+                        SourceUrl = "https://github.com/psg107/SimpleBlog",
+                        ReferenceUrl = null,
+                    },
+                    Skills = new List<SkillEntity>
+                    {
+                        skills.SingleOrDefault(x => x.Name == Skill.CSharp.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.AspDotNetMVC.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.AspDotNetWebAPI.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.EntityFramework.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.Razor.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.Html.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.Css.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.Javascript.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.JQuery.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.Bootstrap.ToString()),
                     }
                 },
             };
