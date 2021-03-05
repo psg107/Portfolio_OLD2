@@ -166,6 +166,9 @@ namespace Portfolio.Context
 
             /// <summary> </summary>
             Razor,
+
+            /// <summary> </summary>
+            BLE,
         }
 
         /// <summary>
@@ -1187,6 +1190,31 @@ namespace Portfolio.Context
                         skills.SingleOrDefault(x => x.Name == Skill.Javascript.ToString()),
                         skills.SingleOrDefault(x => x.Name == Skill.JQuery.ToString()),
                         skills.SingleOrDefault(x => x.Name == Skill.Bootstrap.ToString()),
+                    }
+                },
+                new ProjectSkillMatcher
+                {
+                    Project = new ProjectEntity
+                    {
+                        ProjectId = projectIndex++,
+                        Name = "스위치봇 제어 어플리케이션",
+                        Description = "" +
+                            "스위치봇이라는 IOT 기기를 제어하는 모바일 어플리케이션입니다. \n\n" +
+                            "위젯을 통해 스위치봇을 제어하기 위해서는 스위치봇허브라는 제품을 구매해야 하는데 이 제품을 구매하지 않고 위젯을 통해 스위치봇을 제어할 수 있습니다.\n\n" +
+                            "현재 안드로이드만 지원합니다.",
+                        ProjectType = ProjectType.Private,
+                        CreateYear = 2021,
+                        SourceUrl = "https://github.com/psg107/XamarinSwitchBot",
+                        ReferenceUrl = null,
+                        ImageFilePath = "/images/project/swb.jpg"
+                    },
+                    Skills = new List<SkillEntity>
+                    {
+                        skills.SingleOrDefault(x => x.Name == Skill.CSharp.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.Xamarin.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.BLE.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.Android.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.IOS.ToString()),
                     }
                 },
             };
