@@ -946,13 +946,8 @@ namespace Portfolio.Context
                     },
                     Skills = new List<SkillEntity>
                     {
-                        skills.SingleOrDefault(x => x.Name == Skill.CSharp.ToString()),
-                        skills.SingleOrDefault(x => x.Name == Skill.WPF.ToString()),
-                        skills.SingleOrDefault(x => x.Name == Skill.Crawling.ToString()),
-                        skills.SingleOrDefault(x => x.Name == Skill.XPath.ToString()),
-                        skills.SingleOrDefault(x => x.Name == Skill.Regex.ToString()),
-                        skills.SingleOrDefault(x => x.Name == Skill.OpenCV.ToString()),
-                        skills.SingleOrDefault(x => x.Name == Skill.Tesseract.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.AutoHotkey.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.AutoHotkeyGUI.ToString()),
                     }
                 },
                 new ProjectSkillMatcher
@@ -1173,7 +1168,7 @@ namespace Portfolio.Context
                         Description = "" +
                             "블로그 형태의 웹사이트입니다. \n\n" +
                             "현재 명확한 컨셉을 정하지 못해 생각나는 기능을 하나씩 추가하고 있습니다.",
-                        ProjectType = ProjectType.Private,
+                        ProjectType = ProjectType.Private | ProjectType.Incomplete,
                         CreateYear = 2021,
                         SourceUrl = "https://github.com/psg107/SimpleBlog",
                         ReferenceUrl = null,
@@ -1202,7 +1197,7 @@ namespace Portfolio.Context
                             "스위치봇이라는 IOT 기기를 제어하는 모바일 어플리케이션입니다. \n\n" +
                             "위젯을 통해 스위치봇을 제어하기 위해서는 스위치봇허브라는 제품을 구매해야 하는데 이 제품을 구매하지 않고 위젯을 통해 스위치봇을 제어할 수 있습니다.\n\n" +
                             "현재 안드로이드만 지원합니다.",
-                        ProjectType = ProjectType.Private,
+                        ProjectType = ProjectType.Private | ProjectType.Incomplete,
                         CreateYear = 2021,
                         SourceUrl = "https://github.com/psg107/XamarinSwitchBot",
                         ReferenceUrl = null,
@@ -1222,8 +1217,8 @@ namespace Portfolio.Context
             var projects = projectSkillMatchers.Select(x => x.Project).ToList();
             var projectSkills = projectSkillMatchers.SelectMany(x => x.Skills.Select(y => new ProjectSkillEntity 
             {
-                ProjectId = x.Project.ProjectId, 
-                SkillId = y.SkillId 
+                ProjectId = x.Project.ProjectId,
+                SkillId = y.SkillId
             })).ToList();
 
             return (skills, projects, projectSkills);

@@ -22,10 +22,6 @@ namespace Portfolio.Context
         {
             base.OnConfiguring(optionsBuilder);
 
-            //var connectionString = configuration.GetConnectionString("MysqlConnectionString");
-            //optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
-
-#warning 이상하게 appsettings.json에 넣으면 잘 안됨.. 임시로 하드코딩
 #if DEBUG
             var connectionString = configuration.GetConnectionString("MysqlConnectionString");
 #else
@@ -38,23 +34,7 @@ namespace Portfolio.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<ProjectSkillEntity>()
-                        .HasKey(x => new { x.ProjectId, x.SkillId });
-            modelBuilder.Entity<SkillEntity>()
-                        .Property(x => x.SkillId)
-                        .ValueGeneratedOnAdd();
-            modelBuilder.Entity<ProjectEntity>()
-                        .Property(x => x.ProjectId)
-                        .ValueGeneratedOnAdd();
-
-            modelBuilder.Entity<ProjectSkillEntity>()
-                        .HasOne(x => x.Skill)
-                        .WithMany(x => x.ProjectSkills)
-                        .HasForeignKey(x => x.SkillId);
-            modelBuilder.Entity<ProjectSkillEntity>()
-                        .HasOne(x => x.Project)
-                        .WithMany(x => x.ProjectSkills)
-                        .HasForeignKey(x => x.ProjectId);
+            modelBuilder.Entity<ProjectSkillEntity>().HasKey(new string[] { nameof(ProjectSkillEntity.ProjectId), nameof(ProjectSkillEntity.SkillId) });
 
             var (skills, projects, projectSkills) = PortfolioDbContextSeed.GenerateData();
 

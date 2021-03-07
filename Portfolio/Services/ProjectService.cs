@@ -1,4 +1,5 @@
-﻿using Portfolio.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Portfolio.Entities;
 using Portfolio.Models;
 using Portfolio.Repositories;
 using System.Collections.Generic;
@@ -11,12 +12,20 @@ namespace Portfolio.Services
     /// </summary>
     public class ProjectService
     {
-        private readonly IRepositoryBase<Entities.ProjectEntity> projectRepository;
+        private readonly ProjectRepository projectRepository;
+        private readonly SkillRepository skillRepository;
+        private readonly ProjectSkillRepository projectSkillRepository;
         private readonly MapperService mapperService;
 
-        public ProjectService(IRepositoryBase<Entities.ProjectEntity> projectRepository, MapperService mapperService)
+        public ProjectService(
+            ProjectRepository projectRepository, 
+            SkillRepository skillRepository,
+            ProjectSkillRepository projectSkillRepository,
+            MapperService mapperService)
         {
             this.projectRepository = projectRepository;
+            this.skillRepository = skillRepository;
+            this.projectSkillRepository = projectSkillRepository;
             this.mapperService = mapperService;
         }
 
@@ -26,21 +35,32 @@ namespace Portfolio.Services
         /// <returns></returns>
         public IEnumerable<Project> GetProjects()
         {
-            return projectRepository.GetAll()
-                                    .Select(x => this.mapperService.Mapper.Map<ProjectEntity, Project>(x));
+            var projects = projectRepository.GetAll()
+                                            .Include(x => x.ProjectSkills)
+                                            .Include($"{nameof(ProjectEntity.ProjectSkills)}.{nameof(ProjectSkillEntity.Skill)}")
+                                            .Select(x => this.mapperService.Mapper.Map<ProjectEntity, Project>(x));
+
+            return projects;
         }
 
         /// <summary>
         /// 프로젝트에 사용된 스킬 가져오기
         /// </summary>
         /// <returns></returns>
-        public List<CountItem<Skill>> GetProjectCountingSkill()
+        public List<CountItem> GetProjectCountingSkill()
         {
-            return GetProjects().SelectMany(x => x.Skills)
-                                .GroupBy(x => x.Name)
-                                .Select(x => new CountItem<Skill> { Count = x.Count(), Value = x.First() })
-                                .OrderByDescending(x => x.Count)
-                                .ToList();
+            var skills = projectRepository.GetAll()
+                .SelectMany(x => x.ProjectSkills)
+                .GroupBy(x => new { x.SkillId, x.Skill.Name })
+                .Select(x => new CountItem
+                {
+                    Name = x.Key.Name,
+                    Id = x.Key.SkillId,
+                    Count = x.Count()
+                })
+                .OrderByDescending(x => x.Count);
+
+            return skills.ToList();
         }
     }
 }

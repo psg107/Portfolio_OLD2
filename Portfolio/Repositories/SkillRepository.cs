@@ -1,23 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Portfolio.Context;
+﻿using Portfolio.Context;
 using Portfolio.Entities;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Portfolio.Repositories
 {
-    public class SkillRepository : IRepositoryBase<SkillEntity>
+    public class SkillRepository : RepositoryBase<SkillEntity>
     {
-        private readonly PortfolioDbContext context;
-
-        public SkillRepository(PortfolioDbContext context)
+        public SkillRepository(PortfolioDbContext context) : base(context)
         {
-            this.context = context;
-        }
-
-        public IEnumerable<SkillEntity> GetAll()
-        {
-            return context.Skills.AsEnumerable();
         }
     }
 }

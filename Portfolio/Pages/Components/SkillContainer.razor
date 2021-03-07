@@ -2,8 +2,6 @@
 @using Portfolio.Services
 @using ChartJs.Blazor;
 @using ChartJs.Blazor.PieChart;
-@using ChartJs.Blazor.Common;
-@using ChartJs.Blazor.Common.Enums;
 @using ChartJs.Blazor.Util;
 @inject ProjectService ProjectService
 
@@ -45,7 +43,7 @@
         PieDataset<int> dataset = new PieDataset<int>();
         foreach (var countingSkill in countingSkills)
         {
-            _config.Data.Labels.Add(countingSkill.Value.Name); ;
+            _config.Data.Labels.Add(countingSkill.Name); ;
             dataset.Add(countingSkill.Count);
         }
 

@@ -1,28 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Portfolio.Context;
+﻿using Portfolio.Context;
 using Portfolio.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Portfolio.Repositories
 {
-    public class ProjectRepository : IRepositoryBase<ProjectEntity>
+    public class ProjectRepository : RepositoryBase<ProjectEntity>
     {
-        private readonly PortfolioDbContext context;
-
-        public ProjectRepository(PortfolioDbContext context)
+        public ProjectRepository(PortfolioDbContext context) : base(context)
         {
-            this.context = context;
-        }
-
-        public IEnumerable<ProjectEntity> GetAll()
-        {
-            return context.Projects.Include(nameof(ProjectEntity.ProjectSkills))
-                                   .Include($"{nameof(ProjectEntity.ProjectSkills)}.{nameof(ProjectSkillEntity.Skill)}")
-                                   .AsEnumerable();
         }
     }
 }

@@ -1,11 +1,6 @@
-﻿using Portfolio.Defines;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Portfolio.Entities
 {
@@ -13,7 +8,7 @@ namespace Portfolio.Entities
     /// <seealso cref="Models.Skill"/>
     /// </summary>
     [Table("Skill")]
-    public class SkillEntity
+    public class SkillEntity : IEntity
     {
         [Key]
         public int SkillId { get; set; }
@@ -22,9 +17,7 @@ namespace Portfolio.Entities
         /// 
         /// </summary>
         [Required]
-        [MaxLength(ColumnSize.NAME_SIZE)]
+        [MaxLength(50)]
         public string Name { get; set; }
-
-        public virtual ICollection<ProjectSkillEntity> ProjectSkills { get; set; }
     }
 }

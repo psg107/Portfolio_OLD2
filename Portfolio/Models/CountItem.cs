@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Portfolio.Models
 {
-    public class CountItem<T>
+    public class CountItem
     {
-        public int Count { get; set; }
+        public int Id { get; set; }
 
-        public T Value { get; set; }
+        public string Name { get; set; }
+
+        public int Count { get; set; }
     }
 }

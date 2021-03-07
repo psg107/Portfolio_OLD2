@@ -1,5 +1,4 @@
-﻿using Portfolio.Defines;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -30,7 +29,7 @@ namespace Portfolio.Entities
     /// <seealso cref="Models.Project"/>
     /// </summary>
     [Table("Project")]
-    public class ProjectEntity
+    public class ProjectEntity : IEntity
     {
         [Key]
         public int ProjectId { get; set; }
@@ -39,7 +38,7 @@ namespace Portfolio.Entities
         /// 프로젝트명
         /// </summary>
         [Required]
-        [MaxLength(ColumnSize.NAME_SIZE)]
+        [MaxLength(50)]
         public string Name { get; set; }
 
         /// <summary>
@@ -51,7 +50,7 @@ namespace Portfolio.Entities
         /// <summary>
         /// 설명
         /// </summary>
-        [MaxLength(ColumnSize.DESCRIPTION_SIZE)]
+        [MaxLength(1000)]
         public string Description { get; set; }
 
         /// <summary>
@@ -63,13 +62,13 @@ namespace Portfolio.Entities
         /// <summary>
         /// 소스 주소
         /// </summary>
-        [MaxLength(ColumnSize.URL_SIZE)]
+        [MaxLength(100)]
         public string SourceUrl { get; set; }
 
         /// <summary>
         /// 관련 주소
         /// </summary>
-        [MaxLength(ColumnSize.URL_SIZE)]
+        [MaxLength(1000)]
         public string ReferenceUrl { get; set; }
 
         /// <summary>
