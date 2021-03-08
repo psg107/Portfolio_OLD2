@@ -77,6 +77,11 @@ namespace Portfolio.Entities
         public string ImageFilePath { get; set; }
 
         /// <summary>
+        /// 숨김
+        /// </summary>
+        public bool IsHidden { get; set; }
+
+        /// <summary>
         /// 사용 스킬
         /// </summary>
         public virtual ICollection<ProjectSkillEntity> ProjectSkills { get; set; }

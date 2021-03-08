@@ -36,6 +36,7 @@ namespace Portfolio.Services
         public IEnumerable<Project> GetProjects()
         {
             var projects = projectRepository.GetAll()
+                                            .Where(x => !x.IsHidden)
                                             .Include(x => x.ProjectSkills)
                                             .Include($"{nameof(ProjectEntity.ProjectSkills)}.{nameof(ProjectSkillEntity.Skill)}")
                                             .Select(x => this.mapperService.Mapper.Map<ProjectEntity, Project>(x));
@@ -50,6 +51,7 @@ namespace Portfolio.Services
         public List<CountItem> GetProjectCountingSkill()
         {
             var skills = projectRepository.GetAll()
+                .Where(x => !x.IsHidden)
                 .SelectMany(x => x.ProjectSkills)
                 .GroupBy(x => new { x.SkillId, x.Skill.Name })
                 .Select(x => new CountItem
