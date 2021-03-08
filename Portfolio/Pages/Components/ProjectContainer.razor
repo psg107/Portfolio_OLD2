@@ -10,60 +10,62 @@
     <div class="contents">
         @foreach (var project in projects)
         {
-        <div class="project-item">
-            @{
-                if (string.IsNullOrEmpty(@project.ImageFilePath) == false)
-                {
-                    <div class="project-img-wrapper cursor-pointer" @onclick="() => OpenProjectImageUrl(project)">
-                        <img src="@project.ImageFilePath" alt="" srcset="">
+            <div class="project-item">
+                <Animate Animation="Animations.FadeIn" Duration="TimeSpan.FromSeconds(0.5)">
+                    @{
+                        if (string.IsNullOrEmpty(@project.ImageFilePath) == false)
+                        {
+                            <div class="project-img-wrapper cursor-pointer" @onclick="() => OpenProjectImageUrl(project)">
+                                <img src="@project.ImageFilePath" alt="" srcset="">
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="project-img-wrapper">
+                                <img src="/images/project/noImage.jpg" alt="" srcset="">
+                            </div>
+                        }
+                    }
+
+                    <div class="project-description">
+                        <div class="project-icons">
+                            @if (project.ProjectType.HasFlag(Entities.ProjectType.Private))
+                            {
+                                <span class="project-icon private"></span>
+                            }
+                            @if (project.ProjectType.HasFlag(Entities.ProjectType.Company))
+                            {
+                                <span class="project-icon company"></span>
+                            }
+                            @if (project.ProjectType.HasFlag(Entities.ProjectType.Incomplete))
+                            {
+                                <span class="project-icon incomplete"></span>
+                            }
+                        </div>
+                        <ul class="project-skills">
+                            @foreach (var skill in project.Skills)
+                            {
+                                <li>@skill.Name</li>
+                            }
+                        </ul>
+
+                        <div class="project-title">@project.Name</div>
+                        <div class="project-created-year">@(project.CreateYear?.ToString() ?? "-")</div>
+                        <pre class="project-description-text">@project.Description</pre>
+
+                        <div class="project-btn-container">
+                            @if (!project.IsHiddenSourceUrl && !string.IsNullOrEmpty(project.SourceUrl))
+                            {
+                                <a class="project-btn" href="@project.SourceUrl" target="_blank">Source</a>
+                            }
+                            @if (!string.IsNullOrEmpty(project.ReferenceUrl))
+                            {
+                                <a class="project-btn" href="@project.ReferenceUrl" target="_blank">Link</a>
+                            }
+                        </div>
                     </div>
-                }
-                else
-                {
-                    <div class="project-img-wrapper">
-                        <img src="/images/project/noImage.jpg" alt="" srcset="">
-                    </div>
-                }
-            }
-
-            <div class="project-description">
-                <div class="project-icons">
-                    @if (project.ProjectType.HasFlag(Entities.ProjectType.Private))
-                    {
-                        <span class="project-icon private"></span>
-                    }
-                    @if (project.ProjectType.HasFlag(Entities.ProjectType.Company))
-                    {
-                        <span class="project-icon company"></span>
-                    }
-                    @if (project.ProjectType.HasFlag(Entities.ProjectType.Incomplete))
-                    {
-                        <span class="project-icon incomplete"></span>
-                    }
-                </div>
-                <ul class="project-skills">
-                    @foreach (var skill in project.Skills)
-                    {
-                        <li>@skill.Name</li>
-                    }
-                </ul>
-
-                <div class="project-title">@project.Name</div>
-                <div class="project-created-year">@(project.CreateYear?.ToString() ?? "-")</div>
-                <pre class="project-description-text">@project.Description</pre>
-
-                <div class="project-btn-container">
-                    @if (!project.IsHiddenSourceUrl && !string.IsNullOrEmpty(project.SourceUrl))
-                    {
-                        <a class="project-btn" href="@project.SourceUrl" target="_blank">Source</a>
-                    }
-                    @if (!string.IsNullOrEmpty(project.ReferenceUrl))
-                    {
-                        <a class="project-btn" href="@project.ReferenceUrl" target="_blank">Link</a>
-                    }
-                </div>
+                </Animate>
             </div>
-        </div>
         }
     </div>
 </div>
