@@ -66,6 +66,11 @@ namespace Portfolio.Entities
         public string SourceUrl { get; set; }
 
         /// <summary>
+        /// 소스 숨김 상태
+        /// </summary>
+        public bool IsHiddenSourceUrl { get; set; }
+
+        /// <summary>
         /// 관련 주소
         /// </summary>
         [MaxLength(1000)]

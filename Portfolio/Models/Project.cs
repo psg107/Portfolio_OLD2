@@ -40,6 +40,11 @@ namespace Portfolio.Models
         public string SourceUrl { get; set; }
 
         /// <summary>
+        /// 소스 숨김 상태
+        /// </summary>
+        public bool IsHiddenSourceUrl { get; set; }
+
+        /// <summary>
         /// 참고 주소
         /// </summary>
         public string ReferenceUrl { get; set; }

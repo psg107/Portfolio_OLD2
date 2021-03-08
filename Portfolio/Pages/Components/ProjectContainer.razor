@@ -53,9 +53,9 @@
                 <pre class="project-description-text">@project.Description</pre>
 
                 <div class="project-btn-container">
-                    @if (!string.IsNullOrEmpty(project.SourceUrl))
+                    @if (!project.IsHiddenSourceUrl && !string.IsNullOrEmpty(project.SourceUrl))
                     {
-                        <a class="project-btn" href="@project.SourceUrl" target="_blank" style="cursor: @SourceButtonCursorStyle">Source</a>
+                        <a class="project-btn" href="@project.SourceUrl" target="_blank">Source</a>
                     }
                     @if (!string.IsNullOrEmpty(project.ReferenceUrl))
                     {
@@ -69,16 +69,6 @@
 </div>
 
 @code {
-    /// <summary>
-    /// 깃허브 repo 퍼블릭이면 true
-    /// </summary>
-    private const bool IS_PUBLIC_GIT_REPO = false;
-
-    /// <summary>
-    /// 커서 모양
-    /// </summary>
-    private const string SourceButtonCursorStyle = IS_PUBLIC_GIT_REPO ? "unset" : "not-allowed";
-
     /// <summary>
     /// true: 회사 프로젝트 우선 출력, false: 개인 프로젝트 우선 출력
     /// </summary>
