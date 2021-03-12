@@ -315,6 +315,7 @@ namespace Portfolio.Context
                         Description = "" +
                             "고객 관리를 위한 윈도우 어플리케이션입니다.\n\n" +
                             "WPF Devexpress로 제작되었으며 고객 관리를 위한 각종 기능이 포함되어 있습니다.\n\n" +
+                            "- MSSQL 프로시저 호출을 통한 데이터 처리\n" +
                             "- 실시간 전화 알림 수신\n" +
                             "- 실시간 팩스 알림 수신\n" +
                             "- 외부 웹페이지 기능 호출\n" +
@@ -1171,9 +1172,6 @@ namespace Portfolio.Context
                     {
                         skills.SingleOrDefault(x => x.Name == Skill.CSharp.ToString()),
                         skills.SingleOrDefault(x => x.Name == Skill.WPF.ToString()),
-                        skills.SingleOrDefault(x => x.Name == Skill.Regex.ToString()),
-                        skills.SingleOrDefault(x => x.Name == Skill.OpenCV.ToString()),
-                        skills.SingleOrDefault(x => x.Name == Skill.Tesseract.ToString()),
                     }
                 },
                 new ProjectSkillMatcher
