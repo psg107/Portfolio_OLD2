@@ -7,6 +7,11 @@
     <div class="title cursor-pointer" @onclick="ToggleProjectOrder">
         프로젝트<span class="arrow @projectArrowClassStyle"></span>
     </div>
+    <div class="project-tag">
+        <span class="project-icon private cursor-pointer @privateProjectIconStyle" @onclick="TogglePrivateProject"></span>
+        <span class="project-icon company cursor-pointer @companyProjectIconStyle" @onclick="ToggleCompanyProject"></span>
+        <span class="project-icon incomplete cursor-pointer @incompleteProjectIconStyle" @onclick="ToggleIncompleteProject"></span>
+    </div>
     <div class="contents">
         @foreach (var project in projects)
         {
@@ -83,6 +88,24 @@
         => companyFirst ? "arrow-down" : "arrow-up";
 
     /// <summary>
+    /// 
+    /// </summary>
+    public string privateProjectIconStyle
+        => this.HidePrivateProject ? "off" : string.Empty;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public string companyProjectIconStyle
+        => this.HideCompanyProject ? "off" : string.Empty;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public string incompleteProjectIconStyle
+        => this.HideIncompleteProject ? "off" : string.Empty;
+
+    /// <summary>
     /// 최상단 element
     /// </summary>
     public ElementReference Reference { get; set; }
@@ -91,6 +114,37 @@
     /// 프로젝트
     /// </summary>
     private List<Models.Project> projects;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public bool HidePrivateProject { get; set; }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public bool HideCompanyProject { get; set; }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public bool HideIncompleteProject { get; set; }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public int ActivateProjectIconCount
+    {
+        get
+        {
+            var cnt = 0;
+
+            cnt = cnt + (this.HidePrivateProject == false ? 1 : 0);
+            cnt = cnt + (this.HideCompanyProject == false ? 1 : 0);
+
+            return cnt;
+        }
+    }
 
     protected override void OnInitialized()
     {
@@ -118,9 +172,23 @@
     {
         var project = ProjectService.GetProjects();
 
+#warning 전부 로드해놓고 메모리에서 처리함
+        if (this.HidePrivateProject)
+        {
+            project = project.Where(x => !x.ProjectType.HasFlag(Entities.ProjectType.Private));
+        }
+        if (this.HideCompanyProject)
+        {
+            project = project.Where(x => !x.ProjectType.HasFlag(Entities.ProjectType.Company));
+        }
+        if (this.HideIncompleteProject)
+        {
+            project = project.Where(x => !x.ProjectType.HasFlag(Entities.ProjectType.Incomplete));
+        }
+
         IOrderedEnumerable<Models.Project> orderedProject = companyFirst
-            ? project.OrderByDescending(x => x.ProjectType.HasFlag(Entities.ProjectType.Company))
-            : project.OrderBy(x => x.ProjectType.HasFlag(Entities.ProjectType.Company));
+          ? project.OrderByDescending(x => x.ProjectType.HasFlag(Entities.ProjectType.Company))
+          : project.OrderBy(x => x.ProjectType.HasFlag(Entities.ProjectType.Company));
 
         project = orderedProject.ThenByDescending(x => x.CreateYear).ThenByDescending(x => x.ProjectId);
 
@@ -139,5 +207,45 @@
         }
 
         await JSRuntime.InvokeAsync<object>("open", $"{NavManager.BaseUri}{project.ImageFilePath}", "_blank");
+    }
+
+    /// <summary>
+    /// 개인 on/off
+    /// </summary>
+    private void TogglePrivateProject()
+    {
+        if (ActivateProjectIconCount <= 1 && !this.HidePrivateProject)
+        {
+            return;
+        }
+
+        this.HidePrivateProject = !this.HidePrivateProject;
+
+        LoadProjects();
+    }
+
+    /// <summary>
+    /// 회사 on/off
+    /// </summary>
+    private void ToggleCompanyProject()
+    {
+        if (ActivateProjectIconCount <= 1 && !this.HideCompanyProject)
+        {
+            return;
+        }
+
+        this.HideCompanyProject = !this.HideCompanyProject;
+
+        LoadProjects();
+    }
+
+    /// <summary>
+    /// 미완성 on/off
+    /// </summary>
+    private void ToggleIncompleteProject()
+    {
+        this.HideIncompleteProject = !this.HideIncompleteProject;
+
+        LoadProjects();
     }
 }

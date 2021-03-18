@@ -17,7 +17,6 @@
 }
 
 .title {
-    display: inline-block;
     border-left: 4px solid #E5E5E5;
     font-size: 30px;
     font-weight: bold;
@@ -37,6 +36,16 @@
 
 .projects > .contents {
     display: grid;
+}
+
+.project-tag {
+    display: inline-block;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.project-icon.off {
+    opacity: 0.3;
 }
 
 .project-item {
@@ -88,7 +97,7 @@
 }
 
 /* 프로젝트 - 아이콘 */
-.project-item .project-description .project-icon {
+.project-icon {
     float: left;
     margin-right: 2px;
     color: white;
@@ -97,35 +106,35 @@
     border: 2px solid black;
 }
 
-.project-item .project-description .project-icon.company {
+.project-icon.company {
     background: #AA0000;
 }
 
-.project-item .project-description .project-icon.company::before {
+.project-icon.company::before {
     content: '회사';
 }
 
-.project-item .project-description .project-icon.private {
+.project-icon.private {
     background: green;
 }
 
-.project-item .project-description .project-icon.private::before {
+.project-icon.private::before {
     content: '개인';
 }
 
-.project-item .project-description .project-icon.etc {
+.project-icon.etc {
     background: lightblue;
 }
 
-.project-item .project-description .project-icon.etc::before {
+.project-icon.etc::before {
     content: '기타';
 }
 
-.project-item .project-description .project-icon.incomplete {
+.project-icon.incomplete {
     background: gray;
 }
 
-.project-item .project-description .project-icon.incomplete::before {
+.project-icon.incomplete::before {
     content: '미완성';
 }
 
