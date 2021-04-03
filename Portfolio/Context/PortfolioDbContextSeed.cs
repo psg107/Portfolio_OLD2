@@ -204,6 +204,7 @@ namespace Portfolio.Context
                         CreateYear = 2018,
                         SourceUrl = null,
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                     },
                     Skills = new List<SkillEntity>
@@ -224,6 +225,7 @@ namespace Portfolio.Context
                         CreateYear = 2019,
                         SourceUrl = null,
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                     },
                     Skills = new List<SkillEntity>
@@ -248,6 +250,7 @@ namespace Portfolio.Context
                         CreateYear = 2019,
                         SourceUrl = null,
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                     },
                     Skills = new List<SkillEntity>
@@ -269,6 +272,7 @@ namespace Portfolio.Context
                         CreateYear = 2019,
                         SourceUrl = null,
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                     },
                     Skills = new List<SkillEntity>
@@ -292,6 +296,7 @@ namespace Portfolio.Context
                         CreateYear = 2018,
                         SourceUrl = null,
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                     },
                     Skills = new List<SkillEntity>
@@ -327,6 +332,7 @@ namespace Portfolio.Context
                         CreateYear = 2019,
                         SourceUrl = null,
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                     },
                     Skills = new List<SkillEntity>
@@ -354,6 +360,7 @@ namespace Portfolio.Context
                         CreateYear = 2019,
                         SourceUrl = null,
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                     },
                     Skills = new List<SkillEntity>
@@ -378,6 +385,7 @@ namespace Portfolio.Context
                         CreateYear = 2020,
                         SourceUrl = null,
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                     },
                     Skills = new List<SkillEntity>
@@ -398,6 +406,7 @@ namespace Portfolio.Context
                         CreateYear = 2018,
                         SourceUrl = null,
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                     },
                     Skills = new List<SkillEntity>
@@ -420,6 +429,7 @@ namespace Portfolio.Context
                         CreateYear = 2020,
                         SourceUrl = "https://github.com/psg107/Portfolio",
                         IsHiddenSourceUrl = false,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/pf.png"
                     },
@@ -451,6 +461,7 @@ namespace Portfolio.Context
                         CreateYear = 2020,
                         SourceUrl = "https://github.com/psg107/TelegramMonitorServer",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/bbmonitor.png"
                     },
@@ -477,6 +488,7 @@ namespace Portfolio.Context
                         CreateYear = 2020,
                         SourceUrl = "https://github.com/psg107/InterparkTicketing",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/it.png"
                     },
@@ -505,6 +517,7 @@ namespace Portfolio.Context
                         CreateYear = 2020,
                         SourceUrl = "https://github.com/psg107/InterparkTicketingM",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/itm.png"
                     },
@@ -532,6 +545,7 @@ namespace Portfolio.Context
                         CreateYear = 2020,
                         SourceUrl = "https://github.com/psg107/HwpSharp",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/hc.png"
                     },
@@ -556,6 +570,7 @@ namespace Portfolio.Context
                         CreateYear = 2018,
                         SourceUrl = "https://github.com/psg107/HongMacroServerCrack",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/hongserverold.png"
                     },
@@ -581,6 +596,7 @@ namespace Portfolio.Context
                         CreateYear = 2020,
                         SourceUrl = "https://github.com/psg107/HongServer",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/hongserver.png"
                     },
@@ -608,6 +624,7 @@ namespace Portfolio.Context
                         CreateYear = 2018,
                         SourceUrl = "https://github.com/psg107/HongUpdater",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/hongupdater.png"
                     },
@@ -630,6 +647,7 @@ namespace Portfolio.Context
                         CreateYear = 2020,
                         SourceUrl = "https://github.com/psg107/CoupangPaymentLib",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/cp.png"
                     },
@@ -656,6 +674,7 @@ namespace Portfolio.Context
                         CreateYear = 2020,
                         SourceUrl = "https://github.com/psg107/CoupangMaskAHK",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/cpmonitorahk.png"
                     },
@@ -680,6 +699,7 @@ namespace Portfolio.Context
                         CreateYear = 2020,
                         SourceUrl = "https://github.com/psg107/AutoNaverStore",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/naverstore.png"
                     },
@@ -703,6 +723,7 @@ namespace Portfolio.Context
                         CreateYear = 2020,
                         SourceUrl = "https://github.com/psg107/CostcoMonitor",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null
                     },
                     Skills = new List<SkillEntity>
@@ -728,6 +749,7 @@ namespace Portfolio.Context
                         CreateYear = 2020,
                         SourceUrl = "https://github.com/psg107/CoupangMask",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null
                     },
                     Skills = new List<SkillEntity>
@@ -751,6 +773,7 @@ namespace Portfolio.Context
                         CreateYear = 2020,
                         SourceUrl = null,
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = "http://www.info.go.kr/teacher/schedule/prodown/prodown.do",
                         ImageFilePath = "/images/project/info.jpg"
                     },
@@ -775,6 +798,7 @@ namespace Portfolio.Context
                         CreateYear = 2020,
                         SourceUrl = "https://github.com/psg107/SofranoHelper",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/sofrano.png"
                     },
@@ -801,6 +825,7 @@ namespace Portfolio.Context
                         CreateYear = 2018,
                         SourceUrl = "https://github.com/psg107/fishing",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                     },
                     Skills = new List<SkillEntity>
@@ -828,6 +853,7 @@ namespace Portfolio.Context
                         CreateYear = 2018,
                         SourceUrl = "https://github.com/psg107/SevenKnightsPatchPreviewer",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/sp.png"
                     },
@@ -851,6 +877,7 @@ namespace Portfolio.Context
                         CreateYear = 2019,
                         SourceUrl = "https://github.com/psg107/YoutubeTest",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/yt.png"
                     },
@@ -876,6 +903,7 @@ namespace Portfolio.Context
                         CreateYear = 2017,
                         SourceUrl = "https://github.com/psg107/SKMacro",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/skmacro.png"
                     },
@@ -899,6 +927,7 @@ namespace Portfolio.Context
                         CreateYear = 2017,
                         SourceUrl = "https://github.com/psg107/DAttend",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/duattend.png"
                     },
@@ -924,6 +953,7 @@ namespace Portfolio.Context
                         CreateYear = 2017,
                         SourceUrl = null,
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/remoteattend.png"
                     },
@@ -951,6 +981,7 @@ namespace Portfolio.Context
                         CreateYear = 2017,
                         SourceUrl = null,
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                     },
                     Skills = new List<SkillEntity>
@@ -975,6 +1006,7 @@ namespace Portfolio.Context
                         CreateYear = 2010,
                         SourceUrl = null,
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                     },
                     Skills = new List<SkillEntity>
@@ -995,6 +1027,7 @@ namespace Portfolio.Context
                         CreateYear = 2020,
                         SourceUrl = "https://github.com/psg107/BaccaratHelper",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/bhd.png"
                     },
@@ -1018,6 +1051,7 @@ namespace Portfolio.Context
                         CreateYear = 2020,
                         SourceUrl = "https://github.com/psg107/BaccaratHelper",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/bh.png"
                     },
@@ -1043,6 +1077,7 @@ namespace Portfolio.Context
                         CreateYear = 2020,
                         SourceUrl = "https://github.com/psg107/BaccaratHelper",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/bc.png"
                     },
@@ -1072,6 +1107,7 @@ namespace Portfolio.Context
                         CreateYear = 2020,
                         SourceUrl = "https://github.com/psg107/BaccaratHelper",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/bm.png"
                     },
@@ -1094,6 +1130,7 @@ namespace Portfolio.Context
                         CreateYear = 2020,
                         SourceUrl = "https://github.com/psg107/StickyMSDocumentLanguageSwitch",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = "https://chrome.google.com/webstore/detail/sticky-ms-document-langua/ginmikdcecllccphippnbjjlinaeecma?utm_source=chrome-ntp-icon",
                         ImageFilePath = "/images/project/sm.jpg"
                     },
@@ -1117,6 +1154,7 @@ namespace Portfolio.Context
                         CreateYear = 2020,
                         SourceUrl = "https://github.com/psg107/WideStackoverflow",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/ws.png"
                     },
@@ -1140,6 +1178,7 @@ namespace Portfolio.Context
                         CreateYear = 2020,
                         SourceUrl = "https://github.com/psg107/PriconeWordChainingHelper",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/pw.png"
                     },
@@ -1165,6 +1204,7 @@ namespace Portfolio.Context
                         CreateYear = 2020,
                         SourceUrl = "https://github.com/psg107/EncodingChanger",
                         IsHiddenSourceUrl = true,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/ec.png"
                     },
@@ -1187,6 +1227,7 @@ namespace Portfolio.Context
                         CreateYear = 2021,
                         SourceUrl = "https://github.com/psg107/HumorUnivAutoAssist",
                         IsHiddenSourceUrl = false,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/hu.png"
                     },
@@ -1203,14 +1244,15 @@ namespace Portfolio.Context
                     Project = new ProjectEntity
                     {
                         ProjectId = projectIndex++,
-                        Name = "블로그 형태의 웹사이트",
+                        Name = "음악 추천 블로그",
                         Description = "" +
-                            "블로그 형태의 웹사이트입니다. \n\n" +
-                            "현재 명확한 컨셉을 정하지 못해 생각나는 기능을 하나씩 추가하고 있습니다.",
+                            "음악 추천 컨셉의 블로그 형태의 웹사이트입니다.\n\n" +
+                            "닷넷 코어에 적응하기 위한 연습용 프로젝트로 음악 정보를 직접 입력하거나 유튜브 링크를 입력하여 음악을 등록할 수 있으며 사용자 권한에 따른 처리를 지원합니다.",
                         ProjectType = ProjectType.Private | ProjectType.Incomplete,
                         CreateYear = 2021,
                         SourceUrl = "https://github.com/psg107/SimpleBlog",
-                        IsHiddenSourceUrl = true,
+                        IsHiddenSourceUrl = false,
+                        IsHidden = false,
                         ReferenceUrl = null,
                     },
                     Skills = new List<SkillEntity>
@@ -1241,6 +1283,7 @@ namespace Portfolio.Context
                         CreateYear = 2021,
                         SourceUrl = "https://github.com/psg107/XamarinSwitchBot",
                         IsHiddenSourceUrl = false,
+                        IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/swb.jpg"
                     },
