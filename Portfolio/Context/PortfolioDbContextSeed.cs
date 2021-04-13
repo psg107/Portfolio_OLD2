@@ -428,7 +428,7 @@ namespace Portfolio.Context
                         ProjectType = ProjectType.Private,
                         CreateYear = 2020,
                         SourceUrl = "https://github.com/psg107/Portfolio",
-                        IsHiddenSourceUrl = false,
+                        IsHiddenSourceUrl = true,
                         IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/pf.png"
@@ -1226,7 +1226,7 @@ namespace Portfolio.Context
                         ProjectType = ProjectType.Private,
                         CreateYear = 2021,
                         SourceUrl = "https://github.com/psg107/HumorUnivAutoAssist",
-                        IsHiddenSourceUrl = false,
+                        IsHiddenSourceUrl = true,
                         IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/hu.png"
@@ -1251,7 +1251,7 @@ namespace Portfolio.Context
                         ProjectType = ProjectType.Private | ProjectType.Incomplete,
                         CreateYear = 2021,
                         SourceUrl = "https://github.com/psg107/SimpleBlog",
-                        IsHiddenSourceUrl = false,
+                        IsHiddenSourceUrl = true,
                         IsHidden = false,
                         ReferenceUrl = null,
                     },
@@ -1282,7 +1282,7 @@ namespace Portfolio.Context
                         ProjectType = ProjectType.Private | ProjectType.Incomplete,
                         CreateYear = 2021,
                         SourceUrl = "https://github.com/psg107/XamarinSwitchBot",
-                        IsHiddenSourceUrl = false,
+                        IsHiddenSourceUrl = true,
                         IsHidden = false,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/swb.jpg"
@@ -1294,6 +1294,31 @@ namespace Portfolio.Context
                         skills.SingleOrDefault(x => x.Name == Skill.BLE.ToString()),
                         skills.SingleOrDefault(x => x.Name == Skill.Android.ToString()),
                         skills.SingleOrDefault(x => x.Name == Skill.IOS.ToString()),
+                    }
+                },
+                new ProjectSkillMatcher
+                {
+                    Project = new ProjectEntity
+                    {
+                        ProjectId = projectIndex++,
+                        Name = "스크립트 로더",
+                        Description = "" +
+                            "오토핫키 스크립트를 하나의 응용 프로그램으로 관리하기 위한 윈도우 어플리케이션입니다.\n\n" +
+                            "특정 폴더에 있는 스크립트를 선택하여 실행할 수 있으며 일부 온라인게임에서의 매크로 감지를 우회할 수 있습니다.",
+                        ProjectType = ProjectType.Private | ProjectType.Incomplete,
+                        CreateYear = 2021,
+                        SourceUrl = "https://github.com/psg107/ScriptLoader",
+                        IsHiddenSourceUrl = true,
+                        IsHidden = false,
+                        ReferenceUrl = null,
+                        ImageFilePath = "/images/project/sl.png"
+                    },
+                    Skills = new List<SkillEntity>
+                    {
+                        skills.SingleOrDefault(x => x.Name == Skill.CSharp.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.WPF.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.AutoHotkey.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.Sqlite.ToString()),
                     }
                 },
             };
