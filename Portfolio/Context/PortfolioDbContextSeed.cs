@@ -1305,7 +1305,7 @@ namespace Portfolio.Context
                         Description = "" +
                             "오토핫키 스크립트를 하나의 응용 프로그램으로 관리하기 위한 윈도우 어플리케이션입니다.\n\n" +
                             "특정 폴더에 있는 스크립트를 선택하여 실행할 수 있으며 일부 온라인게임에서의 매크로 감지를 우회할 수 있습니다.",
-                        ProjectType = ProjectType.Private | ProjectType.Incomplete,
+                        ProjectType = ProjectType.Private,
                         CreateYear = 2021,
                         SourceUrl = "https://github.com/psg107/ScriptLoader",
                         IsHiddenSourceUrl = true,
@@ -1319,6 +1319,29 @@ namespace Portfolio.Context
                         skills.SingleOrDefault(x => x.Name == Skill.WPF.ToString()),
                         skills.SingleOrDefault(x => x.Name == Skill.AutoHotkey.ToString()),
                         skills.SingleOrDefault(x => x.Name == Skill.Sqlite.ToString()),
+                    }
+                },
+                new ProjectSkillMatcher
+                {
+                    Project = new ProjectEntity
+                    {
+                        ProjectId = projectIndex++,
+                        Name = "온라인게임 멀티 클라이언트 도우미",
+                        Description = "" +
+                            "온라인게임 멀티 클라이언트를 쉽게 관리할 수 있도록 도와주는 프로그램입니다.\n\n" +
+                            "서브 클라이언트의 CPU 점유율을 조절하여 저사양 PC에서도 프레임 드랍 없이 게임을 할 수 있도록 도와주며 클라이언트 간 전환을 쉽게 할 수 있도록 합니다.",
+                        ProjectType = ProjectType.Private,
+                        CreateYear = 2021,
+                        SourceUrl = "https://github.com/psg107/MabiMultiClientHelper",
+                        IsHiddenSourceUrl = true,
+                        IsHidden = false,
+                        ReferenceUrl = null,
+                        ImageFilePath = "/images/project/mmch.png"
+                    },
+                    Skills = new List<SkillEntity>
+                    {
+                        skills.SingleOrDefault(x => x.Name == Skill.CSharp.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.WPF.ToString()),
                     }
                 },
             };
