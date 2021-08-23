@@ -1344,6 +1344,30 @@ namespace Portfolio.Context
                         skills.SingleOrDefault(x => x.Name == Skill.WPF.ToString()),
                     }
                 },
+                new ProjectSkillMatcher
+                {
+                    Project = new ProjectEntity
+                    {
+                        ProjectId = projectIndex++,
+                        Name = "SRT 자동 티케팅",
+                        Description = "" +
+                            "SRT 티켓을 자동으로 구매하는 프로그램입니다.\n\n" +
+                            "시작일, 출발역, 도착역을 입력하면 자동으로 해당 티켓을 구매합니다.",
+                        ProjectType = ProjectType.Private,
+                        CreateYear = 2022,
+                        SourceUrl = "https://github.com/psg107/SRT_Ticketing",
+                        IsHiddenSourceUrl = true,
+                        IsHidden = false,
+                        ReferenceUrl = null,
+                        ImageFilePath = null
+                    },
+                    Skills = new List<SkillEntity>
+                    {
+                        skills.SingleOrDefault(x => x.Name == Skill.CSharp.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.Console.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.RestAPI.ToString()),
+                    }
+                },
             };
 
             var projects = projectSkillMatchers.Select(x => x.Project).ToList();
