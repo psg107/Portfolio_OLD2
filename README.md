@@ -1,1 +1,1 @@
-http://27.96.135.115:7000/
+https://sgparkportfolio.azurewebsites.net/
