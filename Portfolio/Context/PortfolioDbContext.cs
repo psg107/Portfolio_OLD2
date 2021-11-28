@@ -22,12 +22,9 @@ namespace Portfolio.Context
         {
             base.OnConfiguring(optionsBuilder);
 
-#if DEBUG
-            var connectionString = configuration.GetConnectionString("MysqlConnectionString");
-#else
-            var connectionString = configuration.GetConnectionString("NaverCloudMySqlConnectionString");
-#endif
-            optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+            var connectionString = configuration.GetConnectionString("SqlServerConnectionString");
+
+            optionsBuilder.UseSqlServer(connectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
