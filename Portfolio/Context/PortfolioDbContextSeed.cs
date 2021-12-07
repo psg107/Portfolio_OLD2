@@ -1368,6 +1368,38 @@ namespace Portfolio.Context
                         skills.SingleOrDefault(x => x.Name == Skill.RestAPI.ToString()),
                     }
                 },
+                new ProjectSkillMatcher
+                {
+                    Project = new ProjectEntity
+                    {
+                        ProjectId = projectIndex++,
+                        Name = "인터파크 투어 운영",
+                        Description = "" +
+                            "인터파크 투어 관련 프론트 및 어드민 페이지 운영 및 기능 추가\n\n",
+                        ProjectType = ProjectType.Company,
+                        CreateYear = 2022,
+                        IsHiddenSourceUrl = true,
+                        IsHidden = false,
+                        ReferenceUrl = null,
+                        ImageFilePath = null
+                    },
+                    Skills = new List<SkillEntity>
+                    {
+                        skills.SingleOrDefault(x => x.Name == Skill.CSharp.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.Console.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.RestAPI.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.AspDotNet.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.AspDotNetMVC.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.AspDotNetWebAPI.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.ClassicASP.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.Html.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.Css.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.Javascript.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.JQuery.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.MSSQL.ToString()),
+                        skills.SingleOrDefault(x => x.Name == Skill.OpenAPI.ToString()),
+                    }
+                },
             };
 
             var projects = projectSkillMatchers.Select(x => x.Project).ToList();

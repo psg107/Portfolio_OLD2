@@ -4,14 +4,19 @@
 @inject NavigationManager NavManager
 
 <div id="project" class="projects" @ref="Reference">
+    @*타이틀*@
     <div class="title cursor-pointer" @onclick="ToggleProjectOrder">
         프로젝트<span class="arrow @projectArrowClassStyle"></span>
     </div>
+
+    @*태그 및 정렬*@
     <div class="project-tag">
         <span class="project-icon private cursor-pointer @privateProjectIconStyle" @onclick="TogglePrivateProject"></span>
         <span class="project-icon company cursor-pointer @companyProjectIconStyle" @onclick="ToggleCompanyProject"></span>
         <span class="project-icon incomplete cursor-pointer @incompleteProjectIconStyle" @onclick="ToggleIncompleteProject"></span>
     </div>
+
+    @*프로젝트 내용*@
     <div class="contents">
         @foreach (var project in projects)
         {
