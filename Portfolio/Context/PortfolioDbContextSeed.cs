@@ -1178,7 +1178,7 @@ namespace Portfolio.Context
                         CreateYear = 2020,
                         SourceUrl = "https://github.com/psg107/PriconeWordChainingHelper",
                         IsHiddenSourceUrl = true,
-                        IsHidden = false,
+                        IsHidden = true,
                         ReferenceUrl = null,
                         ImageFilePath = "/images/project/pw.png"
                     },

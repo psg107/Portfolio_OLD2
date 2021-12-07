@@ -5,8 +5,8 @@
 
 <div id="project" class="projects" @ref="Reference">
     @*타이틀*@
-    <div class="title cursor-pointer" @onclick="ToggleProjectOrder">
-        프로젝트<span class="arrow @projectArrowClassStyle"></span>
+    <div class="title">
+        프로젝트
     </div>
 
     @*태그 및 정렬*@
@@ -155,18 +155,6 @@
     {
         base.OnInitialized();
 
-        this.companyFirst = new Random().Next(0, 2) == 1;
-
-        LoadProjects();
-    }
-
-    /// <summary>
-    /// 프로젝트 정렬 화살표 토글
-    /// </summary>
-    private void ToggleProjectOrder()
-    {
-        companyFirst = !companyFirst;
-
         LoadProjects();
     }
 
@@ -191,11 +179,8 @@
             project = project.Where(x => !x.ProjectType.HasFlag(Entities.ProjectType.Incomplete));
         }
 
-        IOrderedEnumerable<Models.Project> orderedProject = companyFirst
-          ? project.OrderByDescending(x => x.ProjectType.HasFlag(Entities.ProjectType.Company))
-          : project.OrderBy(x => x.ProjectType.HasFlag(Entities.ProjectType.Company));
-
-        project = orderedProject.ThenByDescending(x => x.CreateYear).ThenByDescending(x => x.ProjectId);
+        project = project.OrderByDescending(x => x.CreateYear)
+                         .ThenByDescending(x => x.ProjectId);
 
         this.projects = project.ToList();
     }
