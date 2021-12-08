@@ -26,9 +26,12 @@ namespace Portfolio
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddHttpContextAccessor();
 
+            //DB Context
             services.AddDbContext<PortfolioDbContext>();
 
+            //Services
             services.AddTransient<ProjectRepository>();
             services.AddTransient<SkillRepository>();
             services.AddTransient<ProjectSkillRepository>();

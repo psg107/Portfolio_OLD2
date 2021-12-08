@@ -18,7 +18,7 @@
 
     @*프로젝트 내용*@
     <div class="contents">
-        @foreach (var project in projects)
+        @foreach (var project in Projects)
         {
             <div class="project-item">
                 <Animate Animation="Animations.FadeIn" Duration="TimeSpan.FromSeconds(0.5)">
@@ -81,7 +81,8 @@
 </div>
 
 @code {
-    public enum OrderByEnum {
+    public enum OrderByEnum 
+    {
         Ascending,
         Descending
     }
@@ -125,7 +126,7 @@
     /// <summary>
     /// 프로젝트
     /// </summary>
-    private List<Models.Project> projects;
+    public List<Models.Project> Projects { get; set; } = new List<Models.Project>();
 
     /// <summary>
     /// 
@@ -161,16 +162,6 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
-
-        this.OrderBy = new Func<OrderByEnum>(() =>
-        {
-            var random = new Random().Next(0, 2);  //0 or 1
-        if (random == 1)
-            {
-                return OrderByEnum.Ascending;
-            }
-            return OrderByEnum.Descending;
-        }).Invoke();
 
         LoadProjects();
     }
@@ -221,7 +212,7 @@
                 break;
         }
 
-        this.projects = project.ToList();
+        this.Projects = project.ToList();
     }
 
     /// <summary>
