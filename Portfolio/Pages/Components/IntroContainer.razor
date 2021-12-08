@@ -34,7 +34,7 @@
     /// <returns></returns>
     private async Task OpenGithub()
     {
-        await JSRuntime.InvokeAsync<object>("open", "https://github.com/psg107", "_blank");
+        await JSRuntime.InvokeAsync<IJSObjectReference>("open", "https://github.com/psg107", "_blank");
     }
 
     /// <summary>
@@ -43,7 +43,7 @@
     /// <returns></returns>
     private async Task OpenBaekjoon()
     {
-        await JSRuntime.InvokeAsync<object>("open", "https://www.acmicpc.net/user/psg107", "_blank");
+        await JSRuntime.InvokeAsync<IJSObjectReference>("open", "https://www.acmicpc.net/user/psg107", "_blank");
     }
 
     /// <summary>
@@ -52,6 +52,6 @@
     /// <returns></returns>
     private async Task OpenKakaoOpenChat()
     {
-        await JSRuntime.InvokeAsync<object>("open", "https://open.kakao.com/o/syi2ZGVc", "_blank");
+        await JSRuntime.InvokeAsync<IJSObjectReference>("open", "https://open.kakao.com/o/syi2ZGVc", "_blank");
     }
 }
