@@ -199,7 +199,7 @@
 		"ProjectType": [
 			"Private"
 		],
-		"Description": "현재 보고있는 포트폴리오 페이지입니다.",
+		"Description": "현재 보고있는 포트폴리오 페이지입니다.\n\n(개인PC - MSSQL)\n-> (네이버클라우드 - mysql)\n-> (Azure - Azure DB) 순서로 전환되었습니다.",
 		"CreateYear": 2020,
 		"SourceUrl": "https://github.com/psg107/Portfolio",
 		"IsHiddenSourceUrl": true,
@@ -215,7 +215,8 @@
 			"Css",
 			"Javascript",
 			"MSSQL",
-			"NaverCloudPlatform"
+			"NaverCloudPlatform",
+			"Azure"
 		]
 	},
 	{

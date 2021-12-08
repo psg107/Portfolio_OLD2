@@ -76,6 +76,7 @@ namespace Portfolio.Entities
         [MaxLength(1000)]
         public string ReferenceUrl { get; set; }
 
+#warning 이미지 경로 기반으로 썸네일 처리 필요.. 현재 css로 이미지 사이즈만 줄여놓은 상태임
         /// <summary>
         /// 이미지 경로
         /// </summary>
