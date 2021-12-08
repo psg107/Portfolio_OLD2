@@ -5,8 +5,8 @@
 
 <div id="project" class="projects" @ref="Reference">
     @*타이틀*@
-    <div class="title">
-        프로젝트
+    <div class="title cursor-pointer" @onclick="ToggleProjectOrder">
+        프로젝트<span class="arrow @projectArrowClassStyle"></span>
     </div>
 
     @*태그 및 정렬*@
@@ -81,16 +81,23 @@
 </div>
 
 @code {
+    public enum OrderByEnum {
+        Ascending,
+        Descending
+    }
+
     /// <summary>
-    /// true: 회사 프로젝트 우선 출력, false: 개인 프로젝트 우선 출력
+    /// 정렬 순서
     /// </summary>
-    public bool companyFirst = false;
+    public OrderByEnum OrderBy = OrderByEnum.Descending;
 
     /// <summary>
     /// 프로젝트 옆에 달린 화살표 방향 클래스
     /// </summary>
     public string projectArrowClassStyle
-        => companyFirst ? "arrow-down" : "arrow-up";
+        => OrderBy == OrderByEnum.Ascending 
+          ? "arrow-up" 
+          : "arrow-down";
 
     /// <summary>
     /// 
@@ -155,6 +162,28 @@
     {
         base.OnInitialized();
 
+        this.OrderBy = new Func<OrderByEnum>(() =>
+        {
+            var random = new Random().Next(0, 2);  //0 or 1
+        if (random == 1)
+            {
+                return OrderByEnum.Ascending;
+            }
+            return OrderByEnum.Descending;
+        }).Invoke();
+
+        LoadProjects();
+    }
+
+    /// <summary>
+    /// 프로젝트 정렬 화살표 토글
+    /// </summary>
+    private void ToggleProjectOrder()
+    {
+        OrderBy = OrderBy == OrderByEnum.Ascending 
+                               ? OrderByEnum.Descending 
+                               : OrderByEnum.Ascending;
+
         LoadProjects();
     }
 
@@ -179,8 +208,18 @@
             project = project.Where(x => !x.ProjectType.HasFlag(Entities.ProjectType.Incomplete));
         }
 
-        project = project.OrderByDescending(x => x.CreateYear)
-                         .ThenByDescending(x => x.ProjectId);
+        switch (OrderBy)
+        {
+            case OrderByEnum.Ascending:
+                project = project.OrderBy(x => x.CreateYear)
+                                 .ThenBy(x => x.ProjectId);
+                break;
+
+            case OrderByEnum.Descending:
+                project = project.OrderByDescending(x => x.CreateYear)
+                                 .ThenByDescending(x => x.ProjectId);
+                break;
+        }
 
         this.projects = project.ToList();
     }
