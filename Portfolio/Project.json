@@ -940,11 +940,11 @@
 		]
 	},
 	{
-		"Name": "인터파크 투어 운영",
+		"Name": "투어 서비스 운영",
 		"ProjectType": [
 			"Company"
 		],
-		"Description": "인터파크 투어와 관련 프론트 및 어드민 페이지 운영 작업입니다.\n\nPMS를 통한 각종 요청사항 처리 및 이슈 대응 작업을 진행하였습니다.",
+		"Description": "여행 서비스와 관련된 프론트 및 어드민 페이지 운영 업무입니다.\n\nPMS를 통한 이슈 대응, 기능 추가 및 개선 작업을 진행하였습니다.",
 		"CreateYear": 2022,
 		"SourceUrl": null,
 		"IsHiddenSourceUrl": true,
@@ -1069,7 +1069,7 @@
 		]
 	},
 	{
-		"Name": "인터파크 네이버 상품 연동",
+		"Name": "인터파크 - 네이버 여행 상품 연동",
 		"ProjectType": [
 			"Company"
 		],
@@ -1087,12 +1087,12 @@
 		]
 	},
 	{
-		"Name": "레거시 어드민 프로젝트 마이그레이션",
+		"Name": "레거시 프로젝트 마이그레이션",
 		"ProjectType": [
 			"Company",
 			"Incomplete"
 		],
-		"Description": "기존 익스플로러 기반으로 운영되고 있던 인터파크 투어 어드민 페이지의 마이그레이션 작업입니다.\n\n현재 공수 산정을 위해 일부 기능이 작업되었습니다.",
+		"Description": "22년 익스플로러 종료에 대응하기 위해 기존 레거시 어드민 프로젝트의 마이그레이션 작업입니다.",
 		"CreateYear": 2022,
 		"SourceUrl": null,
 		"IsHiddenSourceUrl": true,
