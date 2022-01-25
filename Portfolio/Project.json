@@ -1092,7 +1092,7 @@
 			"Company",
 			"Incomplete"
 		],
-		"Description": "22년 익스플로러 종료에 대응하기 위해 기존 레거시 어드민 프로젝트의 마이그레이션 작업입니다.",
+		"Description": "기존 익스플로러 기반으로 운영되고 있던 인터파크 투어 어드민 페이지의 마이그레이션 작업입니다.\n\n구형 컴포넌트 교체 및 IE-Chrome 전환 이슈 대응 작업을 진행하고 있습니다.",
 		"CreateYear": 2022,
 		"SourceUrl": null,
 		"IsHiddenSourceUrl": true,
