@@ -38,20 +38,20 @@ namespace Portfolio
             services.AddTransient<ProjectService>();
             services.AddSingleton<MapperService>();
 
-#if !DEBUG
-            var sp = services.BuildServiceProvider();
-            using (var scope = sp.CreateScope())
-            {
-                var scopedServices = scope.ServiceProvider;
-                var db = scopedServices.GetRequiredService<PortfolioDbContext>();
+//#if !DEBUG
+//            var sp = services.BuildServiceProvider();
+//            using (var scope = sp.CreateScope())
+//            {
+//                var scopedServices = scope.ServiceProvider;
+//                var db = scopedServices.GetRequiredService<PortfolioDbContext>();
 
-                // Ensure the database is created.
-                db.Database.EnsureCreated();
+//                // Ensure the database is created.
+//                db.Database.EnsureCreated();
 
-                //https://docs.microsoft.com/ko-kr/ef/core/managing-schemas/migrations/applying?tabs=dotnet-core-cli
-                //db.Database.Migrate();
-            }
-#endif
+//                //https://docs.microsoft.com/ko-kr/ef/core/managing-schemas/migrations/applying?tabs=dotnet-core-cli
+//                //db.Database.Migrate();
+//            }
+//#endif
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

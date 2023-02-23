@@ -33,11 +33,16 @@ namespace Portfolio.Context
 
             modelBuilder.Entity<ProjectSkillEntity>().HasKey(new string[] { nameof(ProjectSkillEntity.ProjectId), nameof(ProjectSkillEntity.SkillId) });
 
+            //seed
             var (skills, projects, projectSkills) = PortfolioDbContextSeed.GenerateData();
 
             modelBuilder.Entity<SkillEntity>().HasData(skills);
             modelBuilder.Entity<ProjectEntity>().HasData(projects);
             modelBuilder.Entity<ProjectSkillEntity>().HasData(projectSkills);
+
+            //auto include
+            modelBuilder.Entity<ProjectEntity>().Navigation(x => x.ProjectSkills).AutoInclude();
+            modelBuilder.Entity<ProjectSkillEntity>().Navigation(x => x.Skill).AutoInclude();
         }
 
         /// <summary>

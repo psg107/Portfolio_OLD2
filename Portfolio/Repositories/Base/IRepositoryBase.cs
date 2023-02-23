@@ -5,7 +5,7 @@ namespace Portfolio.Repositories
 {
     public interface IRepositoryBase<T>
     {
-        IQueryable<T> GetAll(IEnumerable<string> includes = null);
+        List<T> GetAll();
 
         T Get(int id);
     }

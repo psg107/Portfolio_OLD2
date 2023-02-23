@@ -1,10 +1,10 @@
 {
   "dependencies": {
-    "mssql1": {
-      "secretStore": "AzureAppSettings",
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/sgparkportfoliodbserver/databases/Portfolio_db",
+    "mssql3": {
+      "secretStore": null,
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/sgpark/databases/NowWaiting",
       "type": "mssql.azure",
-      "connectionId": "ConnectionStrings:SqlServerConnectionString"
+      "connectionId": "SqlServerConnectionString"
     }
   }
 }
