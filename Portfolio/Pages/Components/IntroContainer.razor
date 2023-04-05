@@ -14,7 +14,6 @@
                 <div class="icon-container">
                     <div class="icon git-icon" title="git" @onclick="OpenGithub"></div>
                     <div class="icon bj-icon" title="baekjoon" @onclick="OpenBaekjoon"></div>
-                    <div class="icon kakao-icon" title="kakao" @onclick="OpenKakaoOpenChat"></div>
                 </div>
             </div>
         </div>
@@ -43,14 +42,5 @@
     private async Task OpenBaekjoon()
     {
         await JSRuntime.InvokeAsync<IJSObjectReference>("open", "https://www.acmicpc.net/user/psg107", "_blank");
-    }
-
-    /// <summary>
-    /// 카카오톡 오픈채팅 열기
-    /// </summary>
-    /// <returns></returns>
-    private async Task OpenKakaoOpenChat()
-    {
-        await JSRuntime.InvokeAsync<IJSObjectReference>("open", "https://open.kakao.com/o/syi2ZGVc", "_blank");
     }
 }
