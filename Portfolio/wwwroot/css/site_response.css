@@ -9,6 +9,8 @@
 @media screen {
     .container {
         max-width: 1650px;
+        min-width: unset;
+        width: 100%;
     }
 
     .projects > .contents {
