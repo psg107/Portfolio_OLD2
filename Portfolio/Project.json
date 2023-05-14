@@ -944,7 +944,7 @@
     "ProjectType": [
       "Company"
     ],
-    "Description": "여행 서비스와 관련된 프론트 및 어드민 페이지 운영 업무입니다.\n\nPMS를 통한 이슈 대응, 기능 추가 및 개선 작업을 진행하고 있습니다.",
+    "Description": "여행 서비스와 관련된 프론트 및 어드민 페이지 운영 업무입니다.\n\nJIra를 통한 이슈 대응, 기능 추가 및 개선 작업을 진행하고 있습니다.",
     "CreateYear": 2022,
     "SourceUrl": null,
     "IsHiddenSourceUrl": false,
