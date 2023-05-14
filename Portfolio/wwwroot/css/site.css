@@ -18,6 +18,15 @@
     padding-left: 10px;
 }
 
+/*intro*/
+.intro .contact-card {
+    margin-top: 20px;
+    border: 1px solid #EEE;
+    padding: 10px;
+    display: inline-block;
+    width: 420px;
+}
+
 .contents {
     padding-left: 20px;
     padding-right: 20px;

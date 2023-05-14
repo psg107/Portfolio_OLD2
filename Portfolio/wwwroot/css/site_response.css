@@ -15,6 +15,7 @@
     }
 }
 
+/*작은 크기의 PC*/
 @media screen AND (min-width:900px) AND (max-width:1156px), print {
     .projects > .contents {
         grid-template-columns: 1fr 1fr;
@@ -29,7 +30,12 @@
     }
 }
 
+/*모바일*/
 @media screen AND (max-width:900px) {
+    .intro .contact-card {
+        width: 100%;
+    }
+
     .projects > .contents {
         grid-template-columns: 1fr;
     }
