@@ -12,18 +12,14 @@
     <ProjectContainer @ref="projectContainerReference" />
 </div>
 
-<Sidebar ActivatedLink="@activatedLink" />
 <AnchorNavigation />
 
 @code {
-    private Sidebar sidebarReference;
     private IntroContainer introContainerReference;
     private SkillContainer skillContainerReference;
     private ProjectContainer projectContainerReference;
 
     private static Action<string> action;
-
-    private string activatedLink;
 
     protected override void OnAfterRender(bool firstRender)
     {
@@ -37,25 +33,6 @@
 
             JSRuntime.InvokeAsync<ElementReference>("addScrollEvent",
                 introContainer, skillContainer, projectContainer);
-
-            action = UpdateActivatedLink;
         }
-    }
-
-    private void Test()
-    {
-        activatedLink = "소개";
-    }
-
-    private void UpdateActivatedLink(string link)
-    {
-        activatedLink = link;
-        StateHasChanged();
-    }
-
-    [JSInvokable]
-    public static void ScrollCallback(string activatedLink)
-    {
-        action.Invoke(activatedLink);
     }
 }

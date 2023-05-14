@@ -1268,5 +1268,24 @@
       "SpringBoot",
       "GithubActions"
     ]
+  },
+  {
+    "Name": "KEmojiExtractorDotnet",
+    "ProjectType": [
+      "Private"
+    ],
+    "Description": "특정 프로세스의 메모리에서 webp 이미지를 추출하는 프로그램입니다.\ngithub에 공개되어 있는 c++ 소스를 참고하여 C# 버전으로 제작했습니다.",
+    "CreateYear": 2023,
+    "SourceUrl": "https://github.com/psg107/KEmojiExtractorDotnet/tree/master",
+    "IsHiddenSourceUrl": false,
+    "ReferenceUrl": "",
+    "ImageFilePath": null,
+    "IsHidden": false,
+    "Skills": [
+      "CSharp",
+      "Console",
+      "C++",
+      "WinAPI"
+    ]
   }
 ]

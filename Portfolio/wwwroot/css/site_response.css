@@ -1,11 +1,4 @@
-﻿/*사이드바 숨기기*/
-@media screen AND (max-width:1900px), print {
-    .sidebar {
-        visibility: collapse;
-    }
-}
-
-/*컨테이너 크기 조절*/
+﻿/*컨테이너 크기 조절*/
 @media screen {
     .container {
         max-width: 1650px;
