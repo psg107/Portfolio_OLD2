@@ -3,13 +3,13 @@
 @using ChartJs.Blazor;
 @using ChartJs.Blazor.PieChart;
 @using ChartJs.Blazor.Util;
-@inject ProjectService ProjectService
+@inject ProjectService projectService
 
 <div id="skill" class="skill" @ref="Reference">
     <div class="title">스킬</div>
     <div class="contents">
         <div class="skill-chart-wrapper">
-            <Chart Config="_config"></Chart>
+            <Chart Config="config"></Chart>
         </div>
     </div>
 </div>
@@ -18,7 +18,7 @@
     /// <summary>
     /// chartjs pie 설정
     /// </summary>
-    private PieConfig _config;
+    private PieConfig config;
 
     /// <summary>
     /// 최상단 element
@@ -29,9 +29,9 @@
     {
         base.OnInitialized();
 
-        var countingSkills = ProjectService.GetProjectCountingSkill();
+        var countingSkills = projectService.GetProjectSkills();
 
-        _config = new PieConfig
+        config = new PieConfig
         {
             Options = new PieOptions
             {
@@ -43,7 +43,7 @@
         PieDataset<int> dataset = new PieDataset<int>();
         foreach (var countingSkill in countingSkills)
         {
-            _config.Data.Labels.Add(countingSkill.Name); ;
+            config.Data.Labels.Add(countingSkill.Name); ;
             dataset.Add(countingSkill.Count);
         }
 
@@ -54,6 +54,6 @@
         }
         dataset.BackgroundColor = randomColors.ToArray();
 
-        _config.Data.Datasets.Add(dataset);
+        config.Data.Datasets.Add(dataset);
     }
 }

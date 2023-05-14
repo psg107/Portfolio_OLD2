@@ -46,16 +46,16 @@ namespace Portfolio.Services
         /// 프로젝트에 사용된 스킬 가져오기
         /// </summary>
         /// <returns></returns>
-        public List<CountItem> GetProjectCountingSkill()
+        public List<Skill> GetProjectSkills()
         {
             var skills = projectRepository.GetAll()
                 .Where(x => !x.IsHidden)
                 .SelectMany(x => x.ProjectSkills)
                 .GroupBy(x => new { x.SkillId, x.Skill.Name })
-                .Select(x => new CountItem
+                .Select(x => new Skill
                 {
+                    SkillId = x.Key.SkillId,
                     Name = x.Key.Name,
-                    Id = x.Key.SkillId,
                     Count = x.Count()
                 })
                 .OrderByDescending(x => x.Count);

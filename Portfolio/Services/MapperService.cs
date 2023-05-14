@@ -18,11 +18,12 @@ namespace Portfolio.Services
             {
                 config.CreateMap<SkillEntity, Skill>();
                 config.CreateMap<ProjectEntity, Project>()
-                    .ForMember(dest => dest.Skills,
-                               option =>
-                               {
-                                   option.MapFrom(src => src.ProjectSkills.Select(x => Mapper.Map<SkillEntity, Skill>(x.Skill)));
-                               });
+                    .ForMember(
+                        dest => dest.Skills,
+                        option =>
+                        {
+                            option.MapFrom(src => src.ProjectSkills.Select(x => Mapper.Map<SkillEntity, Skill>(x.Skill)));
+                        });
             });
 
             this.Mapper = mapperConfiguration.CreateMapper();

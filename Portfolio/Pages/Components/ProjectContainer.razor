@@ -1,7 +1,7 @@
 ﻿@using Portfolio.Services
-@inject ProjectService ProjectService
-@inject IJSRuntime JSRuntime
-@inject NavigationManager NavManager
+@inject ProjectService projectService
+@inject IJSRuntime jsRuntime
+@inject NavigationManager navigationManager
 
 <div id="project" class="projects" @ref="Reference">
     @*타이틀*@
@@ -9,7 +9,7 @@
         프로젝트<span class="arrow @projectArrowClassStyle"></span>
     </div>
 
-    @*태그 및 정렬*@
+    @*태그 및 정렬 필터*@
     <div class="project-tag">
         <span class="project-icon private cursor-pointer @privateProjectIconStyle" @onclick="TogglePrivateProject"></span>
         <span class="project-icon company cursor-pointer @companyProjectIconStyle" @onclick="ToggleCompanyProject"></span>
@@ -81,6 +81,8 @@
 </div>
 
 @code {
+    #region ctor & property
+
     public enum OrderByEnum 
     {
         Ascending,
@@ -166,54 +168,49 @@
         LoadProjects();
     }
 
-    /// <summary>
-    /// 프로젝트 정렬 화살표 토글
-    /// </summary>
-    private void ToggleProjectOrder()
-    {
-        OrderBy = OrderBy == OrderByEnum.Ascending 
-                               ? OrderByEnum.Descending 
-                               : OrderByEnum.Ascending;
-
-        LoadProjects();
-    }
+    #endregion
 
     /// <summary>
     ///
     /// </summary>
     private void LoadProjects()
     {
-        var project = ProjectService.GetProjects();
+        var projects = projectService.GetProjects();
 
-#warning 전부 로드해놓고 메모리에서 처리함
+        //타입
         if (this.HidePrivateProject)
         {
-            project = project.Where(x => !x.ProjectType.HasFlag(Entities.ProjectType.Private));
+            projects = projects.Where(x => !x.ProjectType.HasFlag(Entities.ProjectType.Private));
         }
         if (this.HideCompanyProject)
         {
-            project = project.Where(x => !x.ProjectType.HasFlag(Entities.ProjectType.Company));
+            projects = projects.Where(x => !x.ProjectType.HasFlag(Entities.ProjectType.Company));
         }
         if (this.HideIncompleteProject)
         {
-            project = project.Where(x => !x.ProjectType.HasFlag(Entities.ProjectType.Incomplete));
+            projects = projects.Where(x => !x.ProjectType.HasFlag(Entities.ProjectType.Incomplete));
         }
 
+        //스킬
+
+        //정렬
         switch (OrderBy)
         {
             case OrderByEnum.Ascending:
-                project = project.OrderBy(x => x.CreateYear)
+                projects = projects.OrderBy(x => x.CreateYear)
                                  .ThenBy(x => x.ProjectId);
                 break;
 
             case OrderByEnum.Descending:
-                project = project.OrderByDescending(x => x.CreateYear)
+                projects = projects.OrderByDescending(x => x.CreateYear)
                                  .ThenByDescending(x => x.ProjectId);
                 break;
         }
 
-        this.Projects = project.ToList();
+        this.Projects = projects.ToList();
     }
+
+    #region 기타
 
     /// <summary>
     /// 이미지 새창에서 열기
@@ -226,7 +223,23 @@
             return;
         }
 
-        await JSRuntime.InvokeAsync<object>("open", $"{NavManager.BaseUri}{project.ImageFilePath}", "_blank");
+        await jsRuntime.InvokeAsync<object>("open", $"{navigationManager.BaseUri}{project.ImageFilePath}", "_blank");
+    }
+
+    #endregion
+
+    #region 필터링
+
+    /// <summary>
+    /// 프로젝트 정렬 화살표 토글
+    /// </summary>
+    private void ToggleProjectOrder()
+    {
+        OrderBy = OrderBy == OrderByEnum.Ascending
+                               ? OrderByEnum.Descending
+                               : OrderByEnum.Ascending;
+
+        LoadProjects();
     }
 
     /// <summary>
@@ -268,4 +281,6 @@
 
         LoadProjects();
     }
+
+    #endregion
 }
