@@ -1294,7 +1294,7 @@
       "Company",
       "Incomplete"
     ],
-    "Description": "여행 패키지 신규 개발 프로젝트입니다. 코틀린+스프링부트+몽고db 환경으로 상품 및 예약 서비스를 개발하고 있습니다.",
+    "Description": "여행 패키지 신규 개발 프로젝트입니다.\n\n코틀린+스프링부트+몽고db 환경으로 상품 및 예약 서비스를 개발하고 있습니다.",
     "CreateYear": 2023,
     "SourceUrl": "",
     "IsHiddenSourceUrl": true,
