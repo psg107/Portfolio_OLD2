@@ -1287,5 +1287,26 @@
       "C++",
       "WinAPI"
     ]
+  },
+  {
+    "Name": "패키지 신규 개발",
+    "ProjectType": [
+      "Company",
+      "Incomplete"
+    ],
+    "Description": "여행 패키지 신규 개발 프로젝트입니다. 코틀린+스프링부트+몽고db 환경으로 상품 및 예약 서비스를 개발하고 있습니다.",
+    "CreateYear": 2023,
+    "SourceUrl": "",
+    "IsHiddenSourceUrl": true,
+    "ReferenceUrl": "",
+    "ImageFilePath": null,
+    "IsHidden": false,
+    "Skills": [
+      "Kotlin",
+      "SpringBoot",
+      "MongoDB",
+      "aws",
+      "terraform"
+    ]
   }
 ]
